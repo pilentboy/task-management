@@ -36,12 +36,12 @@ const setWelcomeMessage = () => {
 };
 
 const createStar = () => {
-  stars.forEach((e, index) => {
+  stars.forEach((e,index) => {
     let x: number = Math.floor(Math.random() * window.innerWidth + 50);
     let y: number = Math.floor(Math.random() * window.innerHeight + 50);
-    stars[index].style.left = `${x}px`;
-    stars[index].style.top = `${y}px`;
-    index % 2 === 0 ? stars[index].classList.add("animate-ping") : null;
+    e.style.left = `${x}px`;
+    e.style.top = `${y}px`;
+    index % 2 === 0 ? e.classList.add("animate-ping") : null;
     console.log(x, y);
   });
 };
