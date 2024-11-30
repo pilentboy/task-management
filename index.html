@@ -17,7 +17,7 @@
       <div class="container">
         <!-- Loading Screen -->
         <div
-          class="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden items-center justify-center loading-container"
+          class="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center loading-container"
           id="loading"
         >
           <div
@@ -42,7 +42,8 @@
         </div>
         <!-- welcome -->
         <div
-          class="w-full px-2 fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center flex-col"
+          id="welcomingForm"
+          class="w-full px-2 fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden items-center flex-col "
         >
           <h2
             id="welcomeMessage"
@@ -57,10 +58,11 @@
           <!-- register -->
           <form action="#" id="signupForm">
             <div
-              class="flex flex-col mx-auto w-full items-center justify-center gap-3 sm:flex-row mt-5"
+              class="flex flex-col mx-auto w-full items-center justify-center gap-3 sm:flex-row mt-5 "
             >
               <input
                 type="text"
+                id="usernameInput"
                 placeholder="نام کاربری"
                 class="outline-none w-80 px-4 py-4 rounded-md border-[2px] duration-200 text-white bg-transparent placeholder:text-sm hover:border-slate-800"
               />
@@ -74,6 +76,29 @@
         </div>
 
         <!-- managing tasks -->
+      </div>
+      <!-- stars -->
+      <div class="w-screen h-screen top-0 left-0 fixed z-[-1] px-10">
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
       </div>
     </main>
     <script type="module" src="/src/main.ts"></script>
