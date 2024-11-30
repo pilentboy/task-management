@@ -16,17 +16,17 @@ h2 {
 /* font faces */
 @font-face {
   font-family: "Vazir-Thin";
-  src: url("fonts/Vazir-Thin.ttf");
+  src: url("/task-management/fonts/Vazir-Thin.ttf");
   font-style: normal;
 }
 @font-face {
   font-family: "Vazir-Bold";
-  src: url("fonts/Vazir-Bold.ttf");
+  src: url("/task-management/fonts/Vazir-Bold.ttf");
   font-style: normal;
 }
 @font-face {
   font-family: "Vazir-Medium";
-  src: url("fonts/Vazir-Medium.ttf");
+  src: url("/task-management/fonts/Vazir-Medium.ttf");
   font-style: normal;
 }
 
