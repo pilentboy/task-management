@@ -1,0 +1,34 @@
+/* custom loading animations */
+.loading-moon-left {
+  animation-name: loading-moon-left;
+  left: -30%;
+}
+.loading-moon-right {
+  animation-name: loading-moon-right;
+  right: -30%;
+}
+
+.loading-moon {
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-duration: 1s;
+}
+
+@keyframes loading-moon-right {
+  50% {
+    @apply right-[-40%];
+  }
+  100% {
+    @apply right-[-30%];
+  }
+}
+
+@keyframes loading-moon-left {
+  50% {
+    @apply left-[-40%];
+  }
+  100% {
+    @apply left-[-30%];
+  }
+}
+/* custom loading animations */

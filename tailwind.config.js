@@ -11,6 +11,9 @@ module.exports = {
           xl: "6rem",
         },
       },
+      backgroundImage: {
+        test: "url('/images/planet.png')",
+      },
     },
   },
   plugins: [],

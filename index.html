@@ -5,15 +5,48 @@
     <link rel="icon" type="svg" href="./src/assets/logo/logoipsum-293.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>مدیریت فضا</title>
+
+    <style>
+      .test {
+        background: url(./public/images/planet.png);
+      }
+    </style>
   </head>
   <body>
+    <main>
+      <div class="container">
+        <!-- loading -->
+        <div
+          class="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] flex items-center justify-center loading-container" id="loading"
+        >
+          <!-- loading container -->
+          <div
+            class="relative w-40 h-40 rounded-full text bg-cover animate-pulse md:w-60 md:h-60"
+          >
+            <!-- moon -->
 
-    <div class="container">
-      <!-- register -->
-       
-      <!-- managing tasks -->
-    </div>
+            <img
+              src="/images/moon.png"
+              class="w-24 h-24 absolute top-7 rounded-full rotate-[320deg] loading-moon loading-moon-right md:w-40 md:h-40 md:top-11"
+            />
 
+            <img
+              src="/images/moon.png"
+              class="w-24 h-24 absolute top-7 rounded-full rotate-[140deg] loading-moon-left loading-moon md:w-40 md:h-40 md:top-11"
+            />
+
+            <span
+              class="text-white left-5 -bottom-4 absolute md:left-14 md:-bottom-4"
+            >
+              لطفا صبر کنید...
+            </span>
+          </div>
+        </div>
+        <!-- register -->
+
+        <!-- managing tasks -->
+      </div>
+    </main>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
