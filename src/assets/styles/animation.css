@@ -10,11 +10,13 @@
   right: -30%;
 }
 
-.loading-moon {
+.loading-moon-left,
+.loading-moon-right {
   animation-iteration-count: infinite;
   animation-timing-function: ease-in-out;
   animation-duration: 1s;
 }
+
 
 @keyframes loading-moon-right {
   50% {
