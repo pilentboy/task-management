@@ -17,7 +17,6 @@
   animation-duration: 1s;
 }
 
-
 @keyframes loading-moon-right {
   50% {
     right: -40%;
@@ -37,3 +36,26 @@
 }
 
 /* END---------------- */
+
+/* welcome */
+.animate-type {
+  width: 0;
+  overflow: hidden;
+  border-left: 1px solid white;
+  animation: typing 5s steps(70, end) both;
+  white-space: nowrap;
+}
+
+.deplay-5s {
+  animation-delay: 5s;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+    border-left: 0;
+  }
+}

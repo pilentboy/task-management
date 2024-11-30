@@ -17,7 +17,7 @@
       <div class="container">
         <!-- Loading Screen -->
         <div
-          class="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center loading-container"
+          class="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden items-center justify-center loading-container"
           id="loading"
         >
           <div
@@ -40,7 +40,38 @@
             </span>
           </div>
         </div>
-        <!-- register -->
+        <!-- welcome -->
+        <div
+          class="w-full px-2 fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center flex-col"
+        >
+          <h2
+            id="welcomeMessage"
+            class="text-3xl text-slate-500 text-center px-2 animate-bounce"
+          ></h2>
+          <h2
+            class="text-white text-2xl text-center shadow-slate-900 shadow-lg my-10"
+          >
+            برای شروع فقط کافیه یه اسم واسه حسابت وارد کنی
+          </h2>
+
+          <!-- register -->
+          <form action="#" id="signupForm">
+            <div
+              class="flex flex-col mx-auto w-full items-center justify-center gap-3 sm:flex-row mt-5"
+            >
+              <input
+                type="text"
+                placeholder="نام کاربری"
+                class="outline-none w-80 px-4 py-4 rounded-md border-[2px] duration-200 text-white bg-transparent placeholder:text-sm hover:border-slate-800"
+              />
+              <button
+                class="p-4 text-white border-[2px] rounded-md after:absolute after:content-[''] after:w-full after:h-full after:z-[-1] after:bg-slate-900 after:top-0 after:left-0 relative after:translate-x-[100%] overflow-hidden hover:after:translate-x-0 after:duration-150"
+              >
+                شروع
+              </button>
+            </div>
+          </form>
+        </div>
 
         <!-- managing tasks -->
       </div>
