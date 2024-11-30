@@ -14,6 +14,10 @@ module.exports = {
       backgroundImage: {
         test: "url('/images/planet.png')",
       },
+      fontFamily: {
+        vazirBold: ["Vazir-Bold"],
+        vazirMedium: ["Vazir-Medium"],
+      },
     },
   },
   plugins: [],
