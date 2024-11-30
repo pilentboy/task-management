@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="svg" href="/task-management/assets/logoipsum-293-D4cRqmRS.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مدیریت فضا</title>
+
+    <style>
+      .test {
+        background: url(/task-management/assets/planet-sjw5xLBB.png);
+      }
+    </style>
+    <script type="module" crossorigin src="/task-management/assets/index-C-KfItYD.js"></script>
+    <link rel="stylesheet" crossorigin href="/task-management/assets/index-BON2Mjsb.css">
+  </head>
+  <body class="font-vazirMedium">
+    <main>
+      <div class="container">
+        <!-- Loading Screen -->
+        <div
+          class="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center loading-container"
+          id="loading"
+        >
+          <div
+            class="relative w-40 h-40 rounded-full text bg-cover animate-pulse md:w-60 md:h-60"
+          >
+            <img
+              src="/task-management/images/moon.png"
+              class="w-24 h-24 absolute top-7 rounded-full rotate-[320deg] loading-moon loading-moon-right md:w-40 md:h-40 md:top-11"
+            />
+
+            <img
+              src="/task-management/images/moon.png"
+              class="w-24 h-24 absolute top-7 rounded-full rotate-[140deg] loading-moon-left loading-moon md:w-40 md:h-40 md:top-11"
+            />
+
+            <span
+              class="text-white left-5 -bottom-4 absolute md:left-14 md:-bottom-4 font-vazirBold"
+            >
+              لطفا صبر کنید...
+            </span>
+          </div>
+        </div>
+        <!-- welcome -->
+        <div
+          id="welcomingForm"
+          class="w-full px-2 fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden items-center flex-col "
+        >
+          <h2
+            id="welcomeMessage"
+            class="text-3xl text-slate-500 text-center px-2 animate-bounce"
+          ></h2>
+          <h2
+            class="text-white text-2xl text-center shadow-slate-900 shadow-lg my-10"
+          >
+            برای شروع فقط کافیه یه اسم واسه حسابت وارد کنی
+          </h2>
+
+          <!-- register -->
+          <form action="#" id="signupForm">
+            <div
+              class="flex flex-col mx-auto w-full items-center justify-center gap-3 sm:flex-row mt-5 "
+            >
+              <input
+                type="text"
+                id="usernameInput"
+                placeholder="نام کاربری"
+                class="outline-none w-80 px-4 py-4 rounded-md border-[2px] duration-200 text-white bg-transparent placeholder:text-sm hover:border-slate-800"
+              />
+              <button
+                class="p-4 text-white border-[2px] rounded-md after:absolute after:content-[''] after:w-full after:h-full after:z-[-1] after:bg-slate-900 after:top-0 after:left-0 relative after:translate-x-[100%] overflow-hidden hover:after:translate-x-0 after:duration-150"
+              >
+                شروع
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- managing tasks -->
+      </div>
+      <!-- stars -->
+      <div class="w-screen h-screen top-0 left-0 fixed z-[-1] px-10">
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+        <span class="star absolute"></span>
+      </div>
+    </main>
+  </body>
+</html>
