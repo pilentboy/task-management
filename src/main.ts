@@ -13,7 +13,7 @@ window.addEventListener("load", () => {
       : renderRegisterContainer();
     loading?.remove();
     setWelcomeMessage();
-  }, 500);
+  }, 1);
 });
 
 // change welcome message text
@@ -213,35 +213,50 @@ const handleUserRegister = (e: any) => {
   }
 };
 
-// render add task btn + svg
-const renderAddTaskBTN = (): void => {
-  const button = document.createElement("button");
-  button.type = "button";
-  button.className =
-    "absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] animation-add-btn duration-500  ";
-  button.setAttribute("id", "addTaskBTN");
-  button.addEventListener("click", displayAddTaskForm);
-  const svg = document.createElement("img");
-  svg.src = `/task-management/svg/square-plus-solid.svg`;
-  button.appendChild(svg);
-  container?.append(button);
+const renderAddTaskBTN = () => {
+  const div = document.createElement("div");
+  div.className =
+    "fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-48 h-48 border-2  rounded-md border-slate-900 flex items-center justify-center overflow-hidden";
+  const wheel = document.createElement("img");
+  wheel.src = "/task-management/svg/setting-svgrepo-com.svg";
+  wheel.className =
+    "duration-300 w-fit h-fit shadow-xl  cursor-pointer bg-transparent";
+  wheel.addEventListener("click", () => {
+    wheel.classList.toggle("animate-wheel");
+  });
+  div.append(wheel);
+  container?.append(div);
 };
 
-let addTaskToggle: boolean = false;
-// display add task form
-const displayAddTaskForm = () => {
-  const addTaskBTN = document.querySelector<HTMLButtonElement>("#addTaskBTN");
-  const svg = addTaskBTN?.children[0];
+// // render add task btn + svg
+// const renderAddTaskBTN = (): void => {
+//   const button = document.createElement("button");
+//   button.type = "button";
+//   button.className =
+//     "absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] animation-add-btn duration-500  ";
+//   button.setAttribute("id", "addTaskBTN");
+//   button.addEventListener("click", displayAddTaskForm);
+//   const svg = document.createElement("img");
+//   svg.src = `/task-management/svg/square-plus-solid.svg`;
+//   button.appendChild(svg);
+//   container?.append(button);
+// };
 
-  if (addTaskToggle) {
-    svg?.setAttribute("src", "/task-management/svg/square-plus-solid.svg");
-    addTaskBTN?.classList.remove("top-[20%]");
-    addTaskBTN?.classList.add("top-1/2");
-    addTaskToggle = false;
-  } else {
-    svg?.setAttribute("src", "/task-management/svg/rectangle-xmark-solid.svg");
-    addTaskBTN?.classList.remove("top-1/2");
-    addTaskBTN?.classList.add("top-[20%]");
-    addTaskToggle = true;
-  }
-};
+// let addTaskToggle: boolean = false;
+
+// const displayAddTaskForm = () => {
+//   const addTaskBTN = document.querySelector<HTMLButtonElement>("#addTaskBTN");
+//   const svg = addTaskBTN?.children[0];
+
+//   if (addTaskToggle) {
+//     svg?.setAttribute("src", "/task-management/svg/square-plus-solid.svg");
+//     addTaskBTN?.classList.remove("top-[20%]");
+//     addTaskBTN?.classList.add("top-1/2");
+//     addTaskToggle = false;
+//   } else {
+//     svg?.setAttribute("src", "/task-management/svg/rectangle-xmark-solid.svg");
+//     addTaskBTN?.classList.remove("top-1/2");
+//     addTaskBTN?.classList.add("top-[20%]");
+//     addTaskToggle = true;
+//   }
+// };

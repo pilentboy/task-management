@@ -93,3 +93,19 @@
   }
 }
 
+/* wheel animation */
+.animate-wheel {
+  animation-name: wheel;
+  animation-duration: 1500ms;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+}
+
+@keyframes wheel {
+  50% {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: translateX(200%);
+  }
+}
