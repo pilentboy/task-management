@@ -78,4 +78,18 @@
   }
 }
 
+/* add btn animation */
+.animation-add-btn {
+  animation-name: addBTN;
+  animation-duration: 1500ms;
+  animation-fill-mode: both;
+}
+@keyframes addBTN {
+  from {
+    scale: 0.8;
+  }
+  to {
+    scale: 1;
+  }
+}
 
