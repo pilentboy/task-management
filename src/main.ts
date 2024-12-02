@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
   renderStars();
   setTimeout(() => {
     localStorage.getItem("username")
-      ? console.log(localStorage.getItem("username"))
+      ? renderAddTaskBTN()
       : renderRegisterContainer();
     loading?.remove();
     setWelcomeMessage();
@@ -206,8 +206,65 @@ const handleUserRegister = (e: any) => {
     welcomingContainer?.classList.add("animation-remove");
     setTimeout(() => {
       welcomingContainer?.remove();
+      renderAddTaskBTN()
     }, 2000);
   } else {
     registerInput?.classList.add("border-red-500");
   }
+};
+
+// render add task btn + svg
+const renderAddTaskBTN = () => {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className =
+    "absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]";
+  // Create the SVG element
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("viewBox", "0 0 448 512");
+  svg.setAttribute("width", "80px");
+
+  // Create the defs element for gradients
+  const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+
+  // Create the linear gradient
+  const linearGradient = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "linearGradient"
+  );
+  linearGradient.setAttribute("id", "addbtn");
+  linearGradient.setAttribute("x1", "0%");
+  linearGradient.setAttribute("y1", "0%");
+  linearGradient.setAttribute("x2", "100%");
+  linearGradient.setAttribute("y2", "100%");
+
+  // Create the stops for the gradient
+  const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  stop1.setAttribute("offset", "0%");
+  stop1.setAttribute("style", "stop-color: #0f172a; stop-opacity: 1");
+
+  const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+  stop2.setAttribute("offset", "100%");
+  stop2.setAttribute("style", "stop-color: #386ce6; stop-opacity: 1");
+
+  // Append stops to the gradient
+  linearGradient.appendChild(stop1);
+  linearGradient.appendChild(stop2);
+
+  // Append gradient to defs
+  defs.appendChild(linearGradient);
+
+  // Create the path element for the SVG
+  const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+  path.setAttribute(
+    "d",
+    "M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM200 344l0-64-64 0c-13.3 0-24-10.7-24-24s10.7-24 24-24l64 0 0-64c0-13.3 10.7-24 24-24s24 10.7 24 24l0 64 64 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-64 0 0 64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"
+  );
+  path.setAttribute("fill", "url(#addbtn)");
+
+  // Append elements in order
+  svg.appendChild(defs);
+  svg.appendChild(path);
+  button.appendChild(svg);
+  container?.append(button);
 };

@@ -66,6 +66,7 @@
   animation-duration: 2s;
   animation-iteration-count: 1;
   animation-fill-mode: both;
+  @apply text-slate-500;
 }
 
 @keyframes removeElement {
@@ -76,3 +77,5 @@
     opacity: 0;
   }
 }
+
+
