@@ -284,35 +284,3 @@ const handleAddTask = (value: string) => {
     localStorage.setItem("tasks", JSON.stringify([value]));
   }
 };
-// // render add task btn + svg
-// const renderAddTaskBTN = (): void => {
-//   const button = document.createElement("button");
-//   button.type = "button";
-//   button.className =
-//     "absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] animation-add-btn duration-500  ";
-//   button.setAttribute("id", "addTaskBTN");
-//   button.addEventListener("click", displayAddTaskForm);
-//   const svg = document.createElement("img");
-//   svg.src = `/task-management/svg/square-plus-solid.svg`;
-//   button.appendChild(svg);
-//   container?.append(button);
-// };
-
-// let addTaskToggle: boolean = false;
-
-// const displayAddTaskForm = () => {
-//   const addTaskBTN = document.querySelector<HTMLButtonElement>("#addTaskBTN");
-//   const svg = addTaskBTN?.children[0];
-
-//   if (addTaskToggle) {
-//     svg?.setAttribute("src", "/task-management/svg/square-plus-solid.svg");
-//     addTaskBTN?.classList.remove("top-[20%]");
-//     addTaskBTN?.classList.add("top-1/2");
-//     addTaskToggle = false;
-//   } else {
-//     svg?.setAttribute("src", "/task-management/svg/rectangle-xmark-solid.svg");
-//     addTaskBTN?.classList.remove("top-1/2");
-//     addTaskBTN?.classList.add("top-[20%]");
-//     addTaskToggle = true;
-//   }
-// };
