@@ -214,20 +214,76 @@ const handleUserRegister = (e: any) => {
 };
 
 const renderAddTaskBTN = () => {
-  const div = document.createElement("div");
-  div.className =
-    "fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] w-48 h-48 border-2  rounded-md border-slate-900 flex items-center justify-center overflow-hidden";
+  const taskBox = document.createElement("div");
+  taskBox.setAttribute("id", "addTaskBox");
+  taskBox.className =
+    "flex flex-col	items-center justify-center fixed top-1/2 left-1/2  translate-x-[-50%] translate-y-[-50%] w-48 h-48 border-2 p-4 rounded-md border-slate-900 overflow-hidden";
   const wheel = document.createElement("img");
   wheel.src = "/task-management/svg/setting-svgrepo-com.svg";
   wheel.className =
-    "duration-300 w-fit h-fit shadow-xl  cursor-pointer bg-transparent";
+    "duration-300  shadow-xl  cursor-pointer bg-transparent absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]";
   wheel.addEventListener("click", () => {
-    wheel.classList.toggle("animate-wheel");
+    wheel.classList.add("animate-wheel");
+    setTimeout(() => {
+      taskBox.classList.remove("w-48", "h-48");
+      taskBox.classList.add("w-96", "h-56", "justify-start", "items-start");
+      wheel.classList.add("w-10", "h-10");
+      wheel.src = "/task-management/svg/close-square-svgrepo-com.svg";
+      taskBox.append(renderAddTaskForm());
+    }, 1000);
   });
-  div.append(wheel);
-  container?.append(div);
+  taskBox.append(wheel);
+  container?.append(taskBox);
 };
 
+// create add taskk form
+const renderAddTaskForm = () => {
+  const form = document.createElement("form");
+  form.setAttribute("id", "addTaskForm");
+  form.className = "w-full";
+  const div = document.createElement("div");
+  div.className = "flex flex-col gap-1";
+  form.append(div);
+  const getUsername = localStorage.getItem("username");
+  const username = getUsername ? JSON.parse(getUsername) : null;
+  const title = document.createElement("label");
+  title.setAttribute("for", "taskInput");
+  title.className = "text-white font-2xl animate-type mb-3";
+  title.textContent = `سلام ${username}!  هدفت چیه؟`;
+
+  div.append(title);
+  const taskInput = document.createElement("input");
+  taskInput.className =
+    "w-[90%] p-2 outline-none bg-transparent text-white border-slate-400 border rounded-md placeholder:text-sm";
+  taskInput.placeholder = "هدفم...";
+  taskInput.setAttribute("id", "taskInput");
+  div.append(taskInput);
+  const submitTask = document.createElement("button");
+  submitTask.textContent = "افزودن";
+  submitTask.className =
+    "self-center px-6 py-2 text-white outline-none border border-slate-900 rounded-md hover:scale-110 duration-150 mt-5 relative overflow-hidden ";
+  submitTask.setAttribute("id", "submitTaskBTN");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    handleAddTask(taskInput.value);
+    taskInput.value = "";
+  });
+  div.append(submitTask);
+  form.append(div);
+  return form;
+};
+
+// handle add goals to localstorage
+const handleAddTask = (value: string) => {
+  const taskList = localStorage.getItem("tasks");
+  if (taskList) {
+    const currentTaskList = JSON.parse(taskList);
+    currentTaskList.push(value);
+    localStorage.setItem("tasks", JSON.stringify(currentTaskList));
+  } else {
+    localStorage.setItem("tasks", JSON.stringify([value]));
+  }
+};
 // // render add task btn + svg
 // const renderAddTaskBTN = (): void => {
 //   const button = document.createElement("button");
