@@ -93,20 +93,20 @@
   }
 }
 
-/* wheel animation */
-.animate-wheel {
-  animation-name: wheel;
+/* taskBoxToggler animation */
+.animate-task-box-toggler {
+  animation-name: taskBoxToggler;
   animation-duration: 1500ms;
   animation-timing-function: ease;
   animation-fill-mode: both;
 }
 
-@keyframes wheel {
+@keyframes taskBoxToggler {
   50% {
     transform: rotate(180deg);
   }
   to {
-    transform: translate(250%, 70%);
+    transform: translate(250%, 165%);
   }
 }
 

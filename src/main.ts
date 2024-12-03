@@ -1,6 +1,9 @@
 import "./assets/styles/index.css";
 import "./assets/styles/animation.css";
 import "./assets/styles/custom.css";
+// ---------------- add close button for add new list modal
+// ---------------- change select option style
+// ---------------- create default list for tasks on load event if there's no list
 
 const loading = document.querySelector<HTMLDivElement>("#loading");
 const container = document.querySelector<HTMLDivElement>(".container");
@@ -54,11 +57,11 @@ const renderStars = (): void => {
     "z-[-1]",
     "px-10"
   );
-  const starsCount = 30;
+  const starsCount = 10;
   for (let i = 0; i <= starsCount; i++) {
     const star = document.createElement("span");
     star.classList.add("star", "absolute");
-    i % 2 === 0 ? star.classList.add("animate-ping") : null;
+    // i % 2 === 0 ? star.classList.add("animate-ping") : null;
     const x: number = Math.floor(Math.random() * window.innerWidth + 50);
     const y: number = Math.floor(Math.random() * window.innerHeight + 50);
     star.style.left = `${x}px`;
@@ -203,59 +206,139 @@ const handleUserRegister = (e: any) => {
   }
 };
 
+const addListModal = () => {
+  const taskBox = document.querySelector("#addTaskBox");
+  const form = document.createElement("form");
+  const div = document.createElement("div");
+  div.className =
+    "absolute top-0 left-0 flex flex-col gap-2 items-center justify-center backdrop-blur-lg	 w-full h-full z-[999]";
+  form.append(div);
+  const addListInput = document.createElement("input");
+  addListInput.className =
+    "w-3/4 p-2 outline-none bg-transparent text-white border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
+  addListInput.placeholder = "نام دسته ی جدید...";
+  addListInput.id = "addListInput";
+  div.append(addListInput);
+  const submitNewList = document.createElement("button");
+  submitNewList.textContent = "افزودن";
+  submitNewList.className =
+    "self-submitNewList px-6 py-2 animation-btn text-white outline-none border border-slate-900 rounded-md duration-150 mt-5 relative overflow-hidden ";
+  submitNewList.setAttribute("id", "submitNewList");
+  submitNewList.addEventListener("click", () => {
+    if (addListInput.value.length > 0) {
+      const taskList = localStorage.getItem("tasks");
+      const updatedTaskList = taskList ? JSON.parse(taskList) : null;
+      updatedTaskList.push({ [addListInput?.value]: [] });
+      localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
+      console.log("done");
+    } else {
+      addListInput.classList.remove("border-slate-400");
+      addListInput.classList.add("border-red-500");
+    }
+  });
+  div.append(submitNewList);
+  taskBox?.append(div);
+};
+
 const renderAddTaskBox = () => {
   const taskBox = document.createElement("div");
-  taskBox.setAttribute("id", "addTaskBox");
+  taskBox.id = "addTaskBox";
   taskBox.className =
-    "flex flex-col	items-center justify-center fixed top-1/2 left-1/2 duration-300	 translate-x-[-50%] translate-y-[-50%] w-48 h-48 border-2 p-4 rounded-md border-slate-900 overflow-hidden";
-  const wheel = document.createElement("img");
-  wheel.src = "/task-management/svg/setting-svgrepo-com.svg";
-  wheel.className =
+    "w-[90%] flex flex-col	items-center justify-center fixed top-1/2 left-1/2 duration-300	 translate-x-[-50%] translate-y-[-50%]  h-48 border-2 p-4 rounded-md border-slate-900 overflow-hidden sm:w-48";
+  const taskBoxToggler = document.createElement("img");
+  taskBoxToggler.src = "/task-management/svg/setting-svgrepo-com.svg";
+  taskBoxToggler.className =
     "duration-300  shadow-xl  cursor-pointer bg-transparent absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]";
-  wheel.addEventListener("click", () => {
-    wheel.classList.add("animate-wheel");
+  taskBoxToggler.addEventListener("click", () => {
+    taskBoxToggler.classList.add("animate-task-box-toggler");
     setTimeout(() => {
       taskBox.classList.remove("w-48", "h-48");
-      taskBox.classList.add("w-96", "h-56", "justify-start", "items-start");
-      wheel.classList.add("w-10", "h-10");
-      wheel.src = "/task-management/svg/close-square-svgrepo-com.svg";
+      taskBox.classList.add("sm:w-96", "h-64", "justify-start", "items-start");
+      taskBoxToggler.classList.add("w-10", "h-10");
+      taskBoxToggler.src = "/task-management/svg/close-square-svgrepo-com.svg";
       taskBox.append(renderAddTaskForm());
     }, 1000);
   });
-  taskBox.append(wheel);
+  taskBox.append(taskBoxToggler);
   container?.append(taskBox);
 };
 
-// create add taskk form
+// create add task form
 const renderAddTaskForm = () => {
   const form = document.createElement("form");
   form.setAttribute("id", "addTaskForm");
   form.className = "w-full";
   const div = document.createElement("div");
-  div.className = "flex flex-col gap-1";
+  div.id = "formContainer";
+  div.className = "flex flex-col gap-2";
   form.append(div);
   const getUsername = localStorage.getItem("username");
   const username = getUsername ? JSON.parse(getUsername) : null;
   const title = document.createElement("label");
   title.setAttribute("for", "taskInput");
-  title.className = "text-white font-2xl animate-type mb-3";
+  title.className = "text-white font-2xl animate-type ";
   title.textContent = `سلام ${username}!  هدفت چیه؟`;
 
   div.append(title);
   const taskInput = document.createElement("input");
   taskInput.className =
-    "w-[90%] p-2 outline-none bg-transparent text-white border-slate-400 border rounded-md placeholder:text-sm";
+    "w-[90%] p-2 outline-none bg-transparent text-white border-slate-400 hover:border-slate-800 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
   taskInput.placeholder = "هدفم...";
   taskInput.setAttribute("id", "taskInput");
   div.append(taskInput);
+  const selectLabel = document.createElement("label");
+  selectLabel.textContent = "تو کدوم دسته؟";
+  selectLabel.className = "text-white text-sm";
+  selectLabel.setAttribute("for", "tasksList");
+  div.append(selectLabel);
+  const selectContainer = document.createElement("div");
+  selectContainer.className = "flex items-center gap-1";
+  const tasksListSelect = document.createElement("select");
+  tasksListSelect.name = "taskList";
+  tasksListSelect.id = "tasksList";
+  tasksListSelect.className =
+    "w-1/2 p-1 bg-transparent cursor-pointer text-white border-slate-400 border hover:border-slate-800 focus:border-slate-800 duration-150  outline-none rounded-md";
+  const taskListNames = localStorage.getItem("tasks") || null;
+  if (taskListNames) {
+    const taskList = JSON.parse(taskListNames);
+    let taskNames: Array<string> = [];
+    taskList.forEach((listName: string) => {
+      taskNames.push(Object.keys(listName)[0]);
+    });
+    taskNames.forEach((currentListName) => {
+      const option = document.createElement("option");
+      option.value = currentListName;
+      option.textContent = currentListName;
+      option.className =
+        "border-slate-400 bg-transparent text-red-500 hover:border-slate-800 focus:border-slate-800 duration-150 ";
+      tasksListSelect.append(option);
+    });
+  } else {
+    const option = document.createElement("option");
+    option.value = "وظایفم";
+    option.textContent = "وظایفم";
+    option.className =
+      "border-slate-400 bg-transparent text-red-500 hover:border-slate-800 focus:border-slate-800 duration-150 ";
+    tasksListSelect.append(option);
+  }
+
+  selectContainer.append(tasksListSelect);
+  const addListBTN = document.createElement("button");
+  addListBTN.setAttribute("type", "button");
+  addListBTN.className = "py-1 px-3 border-none text-white text-lg";
+  addListBTN.textContent = "+";
+  addListBTN.addEventListener("click", addListModal);
+  selectContainer.append(addListBTN);
+  div.append(selectContainer);
   const submitTask = document.createElement("button");
   submitTask.textContent = "افزودن";
   submitTask.className =
     "self-center px-6 py-2 animation-btn text-white outline-none border border-slate-900 rounded-md duration-150 mt-5 relative overflow-hidden ";
   submitTask.setAttribute("id", "submitTaskBTN");
+
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    handleAddTask(taskInput.value);
+    handleAddTask(taskInput.value, tasksListSelect.value);
     taskInput.value = "";
   });
   div.append(submitTask);
@@ -264,13 +347,19 @@ const renderAddTaskForm = () => {
 };
 
 // handle add goals to localstorage
-const handleAddTask = (value: string) => {
+const handleAddTask = (taskTitle: string, listName: string) => {
   const taskList = localStorage.getItem("tasks");
   if (taskList) {
-    const currentTaskList = JSON.parse(taskList);
-    currentTaskList.push(value);
-    localStorage.setItem("tasks", JSON.stringify(currentTaskList));
+    const updatedTaskList = JSON.parse(taskList);
+    updatedTaskList.forEach((list: any) => {
+      if (Object.keys(list)[0] === listName) {
+        const selectedList = list[listName];
+        selectedList.push(taskTitle);
+        list[listName] = selectedList;
+        localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
+      }
+    });
   } else {
-    localStorage.setItem("tasks", JSON.stringify([value]));
+    localStorage.setItem("tasks", JSON.stringify([{ وظایفم: [taskTitle] }]));
   }
 };
