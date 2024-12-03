@@ -131,19 +131,9 @@ const renderRegisterForm = () => {
     "text-white",
     "border-[2px]",
     "rounded-md",
-    "after:absolute",
-    "after:content-['']",
-    "after:w-full",
-    "after:h-full",
-    "after:z-[-1]",
-    "after:bg-slate-900",
-    "after:top-0",
-    "after:left-0",
     "relative",
-    "after:translate-x-[100%]",
-    "overflow-hidden",
-    "hover:after:translate-x-0",
-    "after:duration-150"
+    "animation-btn",
+    "overflow-hidden"
   );
   formInputContainer.append(formBTN);
   return form;
@@ -261,7 +251,7 @@ const renderAddTaskForm = () => {
   const submitTask = document.createElement("button");
   submitTask.textContent = "افزودن";
   submitTask.className =
-    "self-center px-6 py-2 text-white outline-none border border-slate-900 rounded-md hover:scale-110 duration-150 mt-5 relative overflow-hidden ";
+    "self-center px-6 py-2 animation-btn text-white outline-none border border-slate-900 rounded-md duration-150 mt-5 relative overflow-hidden ";
   submitTask.setAttribute("id", "submitTaskBTN");
   form.addEventListener("submit", (e) => {
     e.preventDefault();

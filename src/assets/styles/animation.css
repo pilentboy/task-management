@@ -110,8 +110,8 @@
   }
 }
 
-/* submitTaskBTN animation */
-#submitTaskBTN::after {
+/* btn animation */
+.animation-btn::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -119,11 +119,11 @@
   left: 0;
   top: 0;
   background-color: #0f172a;
-  transform: translateY(-100%);
+  transform: translateX(100%);
   z-index: -1;
-  transition: 500ms;
+  transition: 150ms;
 }
-#submitTaskBTN:hover:after,
-#submitTaskBTN:active:after {
-  transform: translateY(0);
+.animation-btn:hover:after,
+.animation-btn:active:after {
+  transform: translateX(0);
 }
