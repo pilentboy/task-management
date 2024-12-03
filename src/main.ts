@@ -217,7 +217,7 @@ const renderAddTaskBTN = () => {
   const taskBox = document.createElement("div");
   taskBox.setAttribute("id", "addTaskBox");
   taskBox.className =
-    "flex flex-col	items-center justify-center fixed top-1/2 left-1/2 duration-150 translate-x-[-50%] translate-y-[-50%] w-48 h-48 border-2 p-4 rounded-md border-slate-900 overflow-hidden";
+    "flex flex-col	items-center justify-center fixed top-1/2 left-1/2 duration-300	 translate-x-[-50%] translate-y-[-50%] w-48 h-48 border-2 p-4 rounded-md border-slate-900 overflow-hidden";
   const wheel = document.createElement("img");
   wheel.src = "/task-management/svg/setting-svgrepo-com.svg";
   wheel.className =
