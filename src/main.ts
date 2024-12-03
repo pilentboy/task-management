@@ -9,7 +9,7 @@ window.addEventListener("load", () => {
   renderStars();
   setTimeout(() => {
     localStorage.getItem("username")
-      ? renderAddTaskBTN()
+      ? renderAddTaskBox()
       : renderRegisterContainer();
     loading?.remove();
     setWelcomeMessage();
@@ -196,14 +196,14 @@ const handleUserRegister = (e: any) => {
     welcomingContainer?.classList.add("animation-remove");
     setTimeout(() => {
       welcomingContainer?.remove();
-      renderAddTaskBTN();
+      renderAddTaskBox();
     }, 2000);
   } else {
     registerInput?.classList.add("border-red-500");
   }
 };
 
-const renderAddTaskBTN = () => {
+const renderAddTaskBox = () => {
   const taskBox = document.createElement("div");
   taskBox.setAttribute("id", "addTaskBox");
   taskBox.className =
