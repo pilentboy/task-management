@@ -1,8 +1,6 @@
 import "./assets/styles/index.css";
 import "./assets/styles/animation.css";
 import "./assets/styles/custom.css";
-// ---------------- add close button for add new list modal
-// ---------------- change select option style
 // ---------------- create default list for tasks on load event if there's no list
 
 const loading = document.querySelector<HTMLDivElement>("#loading");
@@ -209,22 +207,28 @@ const handleUserRegister = (e: any) => {
 const addListModal = () => {
   const taskBox = document.querySelector("#addTaskBox");
   const form = document.createElement("form");
+  form.className = "z-[999]";
+  form.id = "addNewList";
   const div = document.createElement("div");
-  div.className =
-    "absolute top-0 left-0 flex flex-col gap-2 items-center justify-center backdrop-blur-lg	 w-full h-full z-[999]";
   form.append(div);
+  div.className =
+    "absolute top-0 left-0 flex flex-col gap-2 items-center justify-center backdrop-blur-lg	 w-full h-full ";
   const addListInput = document.createElement("input");
   addListInput.className =
     "w-3/4 p-2 outline-none bg-transparent text-white border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
   addListInput.placeholder = "نام دسته ی جدید...";
   addListInput.id = "addListInput";
   div.append(addListInput);
-  const submitNewList = document.createElement("button");
-  submitNewList.textContent = "افزودن";
-  submitNewList.className =
-    "self-submitNewList px-6 py-2 animation-btn text-white outline-none border border-slate-900 rounded-md duration-150 mt-5 relative overflow-hidden ";
-  submitNewList.setAttribute("id", "submitNewList");
-  submitNewList.addEventListener("click", () => {
+  div.append(
+    renderButtonContianer(
+      renderCloseBTN(() => {
+        form.remove();
+      }),
+      renderSubmitBNT("addNewList")
+    )
+  );
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
     if (addListInput.value.length > 0) {
       const taskList = localStorage.getItem("tasks");
       const updatedTaskList = taskList ? JSON.parse(taskList) : null;
@@ -236,8 +240,7 @@ const addListModal = () => {
       addListInput.classList.add("border-red-500");
     }
   });
-  div.append(submitNewList);
-  taskBox?.append(div);
+  taskBox?.append(form);
 };
 
 const renderAddTaskBox = () => {
@@ -246,18 +249,17 @@ const renderAddTaskBox = () => {
   taskBox.className =
     "w-[90%] flex flex-col	items-center justify-center fixed top-1/2 left-1/2 duration-300	 translate-x-[-50%] translate-y-[-50%]  h-48 border-2 p-4 rounded-md border-slate-900 overflow-hidden sm:w-48";
   const taskBoxToggler = document.createElement("img");
+  taskBoxToggler.id = "taskBoxToggler";
   taskBoxToggler.src = "/task-management/svg/setting-svgrepo-com.svg";
   taskBoxToggler.className =
-    "duration-300  shadow-xl  cursor-pointer bg-transparent absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]";
+    "duration-500  shadow-xl  animate-pulse cursor-pointer absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]";
   taskBoxToggler.addEventListener("click", () => {
-    taskBoxToggler.classList.add("animate-task-box-toggler");
+    taskBoxToggler.classList.add("rotate-90", "animation-remove");
     setTimeout(() => {
       taskBox.classList.remove("w-48", "h-48");
       taskBox.classList.add("sm:w-96", "h-64", "justify-start", "items-start");
-      taskBoxToggler.classList.add("w-10", "h-10");
-      taskBoxToggler.src = "/task-management/svg/close-square-svgrepo-com.svg";
       taskBox.append(renderAddTaskForm());
-    }, 1000);
+    }, 950);
   });
   taskBox.append(taskBoxToggler);
   container?.append(taskBox);
@@ -310,7 +312,7 @@ const renderAddTaskForm = () => {
       option.value = currentListName;
       option.textContent = currentListName;
       option.className =
-        "border-slate-400 bg-transparent text-red-500 hover:border-slate-800 focus:border-slate-800 duration-150 ";
+        "border-slate-400 bg-transparent  text-black hover:border-slate-800 focus:border-slate-800 duration-150 ";
       tasksListSelect.append(option);
     });
   } else {
@@ -318,7 +320,7 @@ const renderAddTaskForm = () => {
     option.value = "وظایفم";
     option.textContent = "وظایفم";
     option.className =
-      "border-slate-400 bg-transparent text-red-500 hover:border-slate-800 focus:border-slate-800 duration-150 ";
+      "border-slate-400 bg-transparent  hover:border-slate-800 focus:border-slate-800 duration-150 ";
     tasksListSelect.append(option);
   }
 
@@ -330,18 +332,33 @@ const renderAddTaskForm = () => {
   addListBTN.addEventListener("click", addListModal);
   selectContainer.append(addListBTN);
   div.append(selectContainer);
-  const submitTask = document.createElement("button");
-  submitTask.textContent = "افزودن";
-  submitTask.className =
-    "self-center px-6 py-2 animation-btn text-white outline-none border border-slate-900 rounded-md duration-150 mt-5 relative overflow-hidden ";
-  submitTask.setAttribute("id", "submitTaskBTN");
+
+  div.append(
+    renderButtonContianer(
+      renderCloseBTN(() => {
+        form.remove();
+        const taskBoxToggler = document.querySelector("#taskBoxToggler");
+        const addTaskBox = document.querySelector("#addTaskBox");
+
+        taskBoxToggler?.classList.remove("animation-remove");
+
+        addTaskBox?.classList.remove(
+          "sm:w-96",
+          "h-64",
+          "justify-start",
+          "items-start"
+        );
+        addTaskBox?.classList.add("w-48", "h-48");
+      }),
+      renderSubmitBNT("submitTaskBTN")
+    )
+  );
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
     handleAddTask(taskInput.value, tasksListSelect.value);
     taskInput.value = "";
   });
-  div.append(submitTask);
   form.append(div);
   return form;
 };
@@ -354,12 +371,47 @@ const handleAddTask = (taskTitle: string, listName: string) => {
     updatedTaskList.forEach((list: any) => {
       if (Object.keys(list)[0] === listName) {
         const selectedList = list[listName];
-        selectedList.push(taskTitle);
+        selectedList.push(taskTitle.trim());
         list[listName] = selectedList;
         localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
       }
     });
   } else {
-    localStorage.setItem("tasks", JSON.stringify([{ وظایفم: [taskTitle] }]));
+    localStorage.setItem(
+      "tasks",
+      JSON.stringify([{ وظایفم: [taskTitle.trim()] }])
+    );
   }
+};
+
+// submit btn
+const renderSubmitBNT = (btnID: string) => {
+  const submitTask = document.createElement("button");
+  submitTask.textContent = "افزودن";
+  submitTask.className =
+    "self-center px-6 py-2 animation-btn text-white outline-none border border-slate-900 rounded-md duration-150 relative overflow-hidden ";
+  submitTask.setAttribute("id", btnID);
+
+  return submitTask;
+};
+
+// button container in forms
+const renderButtonContianer = (firstBTN: any, secondBTN: any) => {
+  const btnDiv = document.createElement("div");
+  btnDiv.className = "w-full flex items-center justify-center gap-10 mt-4";
+  btnDiv.append(firstBTN);
+  btnDiv.append(secondBTN);
+  return btnDiv;
+};
+
+// close btn
+const renderCloseBTN = (action: any) => {
+  const button = document.createElement("button");
+  button.type = "button";
+  const icon = document.createElement("img");
+  icon.src = "/task-management/svg/close-square-svgrepo-com.svg";
+  icon.className = "w-10 h-10";
+  button.append(icon);
+  button.addEventListener("click", action);
+  return button;
 };

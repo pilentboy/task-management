@@ -60,13 +60,14 @@
   }
 }
 
+
+
 /* remove element animation */
 .animation-remove {
   animation-name: removeElement;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-iteration-count: 1;
   animation-fill-mode: both;
-  @apply text-slate-500;
 }
 
 @keyframes removeElement {
@@ -75,6 +76,7 @@
   }
   to {
     opacity: 0;
+    display: none;
   }
 }
 
@@ -93,27 +95,12 @@
   }
 }
 
-/* taskBoxToggler animation */
-.animate-task-box-toggler {
-  animation-name: taskBoxToggler;
-  animation-duration: 1500ms;
-  animation-timing-function: ease;
-  animation-fill-mode: both;
-}
-
-@keyframes taskBoxToggler {
-  50% {
-    transform: rotate(180deg);
-  }
-  to {
-    transform: translate(250%, 165%);
-  }
-}
 
 /* btn animation */
 .animation-btn::after {
   content: "";
   position: absolute;
+
   width: 100%;
   height: 100%;
   left: 0;
