@@ -1,7 +1,6 @@
 import "./assets/styles/index.css";
 import "./assets/styles/animation.css";
 import "./assets/styles/custom.css";
-// ---------------- create default list for tasks on load event if there's no list
 
 const loading = document.querySelector<HTMLDivElement>("#loading");
 const container = document.querySelector<HTMLDivElement>(".container");
@@ -9,12 +8,19 @@ const container = document.querySelector<HTMLDivElement>(".container");
 window.addEventListener("load", () => {
   renderStars();
   setTimeout(() => {
-    localStorage.getItem("username")
-      ? renderAddTaskBox()
-      : renderRegisterContainer();
+    if (localStorage.getItem("username")) {
+      if (!localStorage.getItem("tasks"))
+        localStorage.setItem("tasks", JSON.stringify([{ وظایفم: [] }]));
+      renderAddTaskBox();
+      renderPlaentsContainer();
+      renderPlanets();
+    } else {
+      renderRegisterContainer();
+    }
+    console.log("xx");
     loading?.remove();
     setWelcomeMessage();
-  }, 1);
+  }, 10);
 });
 
 // change welcome message text
@@ -194,10 +200,13 @@ const handleUserRegister = (e: any) => {
       "#welcomingContainer"
     );
     localStorage.setItem("username", JSON.stringify(registerInput.value));
+    localStorage.setItem("tasks", JSON.stringify([{ وظایفم: [] }]));
     welcomingContainer?.classList.add("animation-remove");
     setTimeout(() => {
       welcomingContainer?.remove();
       renderAddTaskBox();
+      renderPlaentsContainer();
+      renderPlanets();
     }, 2000);
   } else {
     registerInput?.classList.add("border-red-500");
@@ -212,10 +221,10 @@ const addListModal = () => {
   const div = document.createElement("div");
   form.append(div);
   div.className =
-    "absolute top-0 left-0 flex flex-col gap-2 items-center justify-center backdrop-blur-lg	 w-full h-full ";
+    "absolute top-0 left-0 flex flex-col gap-2 items-center justify-center bg-black w-full h-full";
   const addListInput = document.createElement("input");
   addListInput.className =
-    "w-3/4 p-2 outline-none bg-transparent text-white border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
+    "w-3/4 p-2 outline-none placeholder:text-gray-600 bg-white text-black border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
   addListInput.placeholder = "نام دسته ی جدید...";
   addListInput.id = "addListInput";
   div.append(addListInput);
@@ -224,23 +233,46 @@ const addListModal = () => {
       renderCloseBTN(() => {
         form.remove();
       }),
-      renderSubmitBNT("addNewList")
+      renderSubmitBTN("addNewList")
     )
   );
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (addListInput.value.length > 0) {
+    if (
+      addListInput.value.length > 0 &&
+      addListInput.value.length < 50 &&
+      checkUserTaskLists(addListInput.value.trim())
+    ) {
       const taskList = localStorage.getItem("tasks");
       const updatedTaskList = taskList ? JSON.parse(taskList) : null;
-      updatedTaskList.push({ [addListInput?.value]: [] });
+      updatedTaskList.push({ [addListInput?.value.trim()]: [] });
       localStorage.setItem("tasks", JSON.stringify(updatedTaskList));
-      console.log("done");
+      addListInput.value = "";
+      document.querySelector("#planetContainer")?.remove();
+      renderPlaentsContainer();
+      renderPlanets();
     } else {
       addListInput.classList.remove("border-slate-400");
-      addListInput.classList.add("border-red-500");
+      addListInput.classList.add("border-red-500", "border-2");
     }
   });
   taskBox?.append(form);
+};
+
+const checkUserTaskLists = (newTaskTitle: string) => {
+  const taskList = localStorage.getItem("tasks");
+  const taskListJson = taskList ? JSON.parse(taskList) : null;
+  let taskTitls: Array<string> = [];
+  taskListJson.forEach((listTitle: any) => {
+    taskTitls.push(Object.keys(listTitle)[0]);
+  });
+  const existListTitle: Array<string> = taskTitls.filter(
+    (title) => title === newTaskTitle
+  );
+  if (existListTitle.length > 0) {
+    return false;
+  }
+  return true;
 };
 
 const renderAddTaskBox = () => {
@@ -248,17 +280,22 @@ const renderAddTaskBox = () => {
   taskBox.id = "addTaskBox";
   taskBox.className =
     "w-[90%] flex flex-col	items-center justify-center fixed top-1/2 left-1/2 duration-300	 translate-x-[-50%] translate-y-[-50%]  h-48 border-2 p-4 rounded-md border-slate-900 overflow-hidden sm:w-48";
-  const taskBoxToggler = document.createElement("img");
+  const taskBoxToggler = document.createElement("button");
   taskBoxToggler.id = "taskBoxToggler";
-  taskBoxToggler.src = "/task-management/svg/setting-svgrepo-com.svg";
+  taskBoxToggler.type = "button";
+  const icon = document.createElement("img");
+  icon.src = "/task-management/svg/setting-svgrepo-com.svg";
   taskBoxToggler.className =
     "duration-500  shadow-xl  animate-pulse cursor-pointer absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%]";
+  taskBoxToggler.append(icon);
   taskBoxToggler.addEventListener("click", () => {
     taskBoxToggler.classList.add("rotate-90", "animation-remove");
+    taskBoxToggler.disabled = true;
     setTimeout(() => {
       taskBox.classList.remove("w-48", "h-48");
       taskBox.classList.add("sm:w-96", "h-64", "justify-start", "items-start");
       taskBox.append(renderAddTaskForm());
+      taskBoxToggler.disabled = false;
     }, 950);
   });
   taskBox.append(taskBoxToggler);
@@ -284,7 +321,7 @@ const renderAddTaskForm = () => {
   div.append(title);
   const taskInput = document.createElement("input");
   taskInput.className =
-    "w-[90%] p-2 outline-none bg-transparent text-white border-slate-400 hover:border-slate-800 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
+    "w-[90%] p-2 outline-none bg-white placeholder:text-gray-600 text-black border-slate-400 hover:border-slate-800 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
   taskInput.placeholder = "هدفم...";
   taskInput.setAttribute("id", "taskInput");
   div.append(taskInput);
@@ -350,14 +387,22 @@ const renderAddTaskForm = () => {
         );
         addTaskBox?.classList.add("w-48", "h-48");
       }),
-      renderSubmitBNT("submitTaskBTN")
+      renderSubmitBTN("submitTaskBTN")
     )
   );
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    handleAddTask(taskInput.value, tasksListSelect.value);
-    taskInput.value = "";
+    if (
+      taskInput.value.trim().length > 0 &&
+      taskInput.value.trim().length < 50
+    ) {
+      handleAddTask(taskInput.value, tasksListSelect.value);
+      taskInput.classList.remove("border-2", "border-red-600");
+      taskInput.value = "";
+    } else {
+      taskInput.classList.add("border-2", "border-red-600");
+    }
   });
   form.append(div);
   return form;
@@ -385,7 +430,7 @@ const handleAddTask = (taskTitle: string, listName: string) => {
 };
 
 // submit btn
-const renderSubmitBNT = (btnID: string) => {
+const renderSubmitBTN = (btnID: string) => {
   const submitTask = document.createElement("button");
   submitTask.textContent = "افزودن";
   submitTask.className =
@@ -414,4 +459,30 @@ const renderCloseBTN = (action: any) => {
   button.append(icon);
   button.addEventListener("click", action);
   return button;
+};
+
+// render task list planets
+const renderPlaentsContainer = (): void => {
+  const planetContainer = document.createElement("div");
+  planetContainer.id = "planetContainer";
+  planetContainer.className =
+    "w-full h-screen flex  items-end justify-center gap-4 p-2";
+  container?.append(planetContainer);
+};
+
+// render plantes
+const renderPlanets = (): void => {
+  const planetContainer = document.querySelector("#planetContainer");
+  const taskList = localStorage.getItem("tasks");
+  const userTasks = taskList ? JSON.parse(taskList) : null;
+  console.log(userTasks);
+  userTasks.forEach((task: any) => {
+    const div = document.createElement("div");
+    div.id = Object.keys(task)[0];
+    div.className = "bg-test2 overflow-hidden bg-cover w-28 h-28 rounded-full";
+    const planet = document.createElement("img");
+    planet.src = "/task-management/images/planet.png";
+    planet.className = "w-fit";
+    planetContainer?.append(div);
+  });
 };

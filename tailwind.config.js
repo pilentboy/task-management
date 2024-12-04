@@ -13,6 +13,7 @@ module.exports = {
       },
       backgroundImage: {
         test: "url('/images/planet.png')",
+        test2: "url(/task-management/images/planet.png)",
       },
       fontFamily: {
         vazirBold: ["Vazir-Bold"],
