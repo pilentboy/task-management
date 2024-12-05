@@ -63,17 +63,17 @@
 /* remove element animation */
 .animation-remove {
   animation-name: removeElement;
-  animation-duration: 1s;
+  animation-duration: 400ms;
   animation-iteration-count: 1;
   animation-fill-mode: both;
 }
 
 @keyframes removeElement {
   from {
-    opacity: 1;
+    width: 112px;
   }
   to {
-    opacity: 0;
+    width: 60px;
     display: none;
   }
 }

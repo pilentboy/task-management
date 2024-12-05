@@ -1,8 +1,7 @@
-import renderTaskBox from "../components/taskBox";
+import renderAppBoxes from "../components/renderAppBoxes";
 
 const handleUserRegister = (e: any) => {
   e.preventDefault();
-  // welcomingContainer
   const registerInput =
     document.querySelector<HTMLInputElement>("#usernameInput");
   if (
@@ -18,7 +17,7 @@ const handleUserRegister = (e: any) => {
     welcomingContainer?.classList.add("animation-remove");
     setTimeout(() => {
       welcomingContainer?.remove();
-      renderTaskBox();
+      renderAppBoxes();
     }, 2000);
   } else {
     registerInput?.classList.add("border-red-500");

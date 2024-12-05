@@ -85,11 +85,11 @@ const renderAddTaskForm = () => {
 
         addTaskBox?.classList.remove(
           "sm:w-96",
-          "h-64",
           "justify-start",
-          "items-start"
+          "items-start",
+          "h-64"
         );
-        addTaskBox?.classList.add("w-48", "h-48");
+        addTaskBox?.classList.add("sm:w-64","h-48");
       }),
       renderSubmitBTN("submitTaskBTN")
     )
