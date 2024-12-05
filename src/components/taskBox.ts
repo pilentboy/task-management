@@ -4,7 +4,7 @@ const renderTaskBox = () => {
   const taskBox = document.createElement("div");
   taskBox.id = "addTaskBox";
   taskBox.className =
-    "w-[90%] h-48 flex flex-col relative	items-center justify-center  sm:h-64 border-[4px] p-4 rounded-xl border-slate-900 overflow-hidden sm:w-64 duration-300";
+    "w-[90%] h-48 flex flex-col relative	items-center justify-center  sm:h-64 border-l-[4px] border-r-[4px] p-4 border-slate-900 overflow-hidden sm:w-64 duration-300";
   const taskBoxToggler = document.createElement("button");
   taskBoxToggler.id = "taskBoxToggler";
   taskBoxToggler.type = "button";
