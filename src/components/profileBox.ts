@@ -1,6 +1,6 @@
 import modalContainer from "../modals/modalContainer";
 
-const renderProfileBox = (displayModal: string | null) => {
+const renderProfileBox = () => {
   const profileBox = document.createElement("div");
   profileBox.id = "profileBox";
   profileBox.className =
