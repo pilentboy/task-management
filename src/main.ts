@@ -4,6 +4,7 @@ import "./assets/styles/custom.css";
 import renderRegisterPage from "./components/registerForm";
 import renderStars from "./components/addStars";
 import renderAppBoxes from "./components/renderAppBoxes";
+
 const loading = document.querySelector<HTMLDivElement>("#loading");
 
 window.addEventListener("load", () => {
@@ -16,7 +17,6 @@ window.addEventListener("load", () => {
     } else {
       renderRegisterPage();
     }
-    console.log("xx");
     loading?.remove();
     setWelcomeMessage();
   }, 10);
@@ -41,3 +41,4 @@ const setWelcomeMessage = () => {
     }
   }
 };
+

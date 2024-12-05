@@ -1,4 +1,6 @@
-const renderProfileBox = () => {
+import modalContainer from "../modals/modalContainer";
+
+const renderProfileBox = (displayModal: string | null) => {
   const profileBox = document.createElement("div");
   profileBox.id = "profileBox";
   profileBox.className =
@@ -12,6 +14,9 @@ const renderProfileBox = () => {
     "duration-500 w-20  absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center";
   profileBoxToggler.append(icon);
   profileBox.append(profileBoxToggler);
+  profileBox.addEventListener("click", () => {
+    modalContainer();
+  });
   return profileBox;
 };
 
