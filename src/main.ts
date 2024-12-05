@@ -327,7 +327,7 @@ const renderAddTaskForm = () => {
   div.append(taskInput);
   const selectLabel = document.createElement("label");
   selectLabel.textContent = "تو کدوم دسته؟";
-  selectLabel.className = "text-white text-sm";
+  selectLabel.className = "text-white font-2xl";
   selectLabel.setAttribute("for", "tasksList");
   div.append(selectLabel);
   const selectContainer = document.createElement("div");
