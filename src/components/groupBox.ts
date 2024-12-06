@@ -1,4 +1,3 @@
-import modalContainer from "../modals/modalContainer";
 
 const renderGroupBox = () => {
   const groupBox = document.createElement("div");

@@ -18,7 +18,7 @@ const renderStars = (): void => {
     "z-[-1]",
     "px-10"
   );
-  const starsCount = 40;
+  const starsCount = 20;
   for (let i = 0; i <= starsCount; i++) {
     const star = document.createElement("span");
     star.classList.add("star", "absolute");

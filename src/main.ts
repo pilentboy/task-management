@@ -1,7 +1,7 @@
 import "./assets/styles/index.css";
 import "./assets/styles/animation.css";
 import "./assets/styles/custom.css";
-import 'animate.css';
+import "animate.css";
 import renderRegisterPage from "./components/registerForm";
 import renderStars from "./components/addStars";
 import renderAppBoxes from "./components/renderAppBoxes";
@@ -9,7 +9,7 @@ import renderAppBoxes from "./components/renderAppBoxes";
 const loading = document.querySelector<HTMLDivElement>("#loading");
 
 window.addEventListener("load", () => {
-  // renderStars();
+  renderStars();
   setTimeout(() => {
     if (localStorage.getItem("username")) {
       if (!localStorage.getItem("groups"))
@@ -42,4 +42,3 @@ const setWelcomeMessage = () => {
     }
   }
 };
-
