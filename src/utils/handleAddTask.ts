@@ -1,7 +1,10 @@
+
+
 interface taskInfo {
   title: string;
   status: boolean;
 }
+
 
 // handle add tasks to localstorage
 const handleAddTask = (taskTitle: string, listName: string) => {
