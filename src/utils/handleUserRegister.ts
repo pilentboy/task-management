@@ -12,7 +12,7 @@ const handleUserRegister = (e: any) => {
     const welcomingContainer = document.querySelector<HTMLDivElement>(
       "#welcomingContainer"
     );
-    localStorage.setItem("username", JSON.stringify(registerInput.value));
+    localStorage.setItem("username", registerInput.value);
     localStorage.setItem("groups", JSON.stringify([{ وظایفم: [] }]));
     welcomingContainer?.classList.add("animation-remove");
     setTimeout(() => {

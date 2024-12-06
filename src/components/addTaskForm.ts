@@ -13,14 +13,13 @@ const renderAddTaskForm = () => {
   form.className = "w-full";
   const div = document.createElement("div");
   div.id = "formContainer";
-  div.className = "flex flex-col gap-2";
+  div.className = "flex flex-col gap-2 add-task-bg";
   form.append(div);
   const getUsername = localStorage.getItem("username");
-  const username = getUsername ? JSON.parse(getUsername) : null;
   const title = document.createElement("label");
   title.setAttribute("for", "taskInput");
   title.className = "text-white font-2xl animate-type ";
-  title.textContent = `سلام ${username}!  هدفت چیه؟`;
+  title.textContent = `سلام ${getUsername}!  هدفت چیه؟`;
 
   div.append(title);
   const taskInput = document.createElement("input");
@@ -89,9 +88,9 @@ const renderAddTaskForm = () => {
           "items-start",
           "h-64"
         );
-        addTaskBox?.classList.add("sm:w-64","h-48");
+        addTaskBox?.classList.add("sm:w-64", "h-48");
       }),
-      renderSubmitBTN("submitTaskBTN")
+      renderSubmitBTN("submitTaskBTN", "افزودن", false)
     )
   );
 

@@ -1,6 +1,7 @@
 import "./assets/styles/index.css";
 import "./assets/styles/animation.css";
 import "./assets/styles/custom.css";
+import 'animate.css';
 import renderRegisterPage from "./components/registerForm";
 import renderStars from "./components/addStars";
 import renderAppBoxes from "./components/renderAppBoxes";

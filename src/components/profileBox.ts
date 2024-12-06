@@ -1,10 +1,11 @@
 import modalContainer from "../modals/modalContainer";
+import profile from "./profile";
 
 const renderProfileBox = () => {
   const profileBox = document.createElement("div");
   profileBox.id = "profileBox";
   profileBox.className =
-    "w-[70%] h-36 flex flex-col relative items-center justify-center  sm:h-48 border-[4px] p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-110 cursor-pointer";
+    "w-[70%] h-36 flex flex-col relative items-center justify-center  sm:h-48 border-[4px] p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
   const profileBoxToggler = document.createElement("button");
   profileBoxToggler.id = "groupBoxToggler";
   profileBoxToggler.type = "button";
@@ -15,9 +16,8 @@ const renderProfileBox = () => {
   profileBoxToggler.append(icon);
   profileBox.append(profileBoxToggler);
   profileBox.addEventListener("click", () => {
-    modalContainer();
+    modalContainer(profile());
   });
   return profileBox;
 };
-
 export default renderProfileBox;

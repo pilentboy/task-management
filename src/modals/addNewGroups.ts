@@ -4,12 +4,12 @@ import checkUserGroups from "../utils/checkUserGroups";
 const addNewGroups = () => {
     const taskBox = document.querySelector("#addTaskBox");
     const form = document.createElement("form");
-    form.className = "z-[999]";
+    form.className = "z-[5]";
     form.id = "addNewList";
     const div = document.createElement("div");
     form.append(div);
     div.className =
-      "absolute top-0 left-0 flex flex-col gap-2 items-center justify-center bg-black w-full h-full";
+      "absolute top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-full";
     const addListInput = document.createElement("input");
     addListInput.className =
       "w-3/4 p-2 outline-none placeholder:text-gray-600 bg-white text-black border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
