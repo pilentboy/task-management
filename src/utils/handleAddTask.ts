@@ -1,10 +1,10 @@
-
+import { v4 as uniqueID } from "uuid";
 
 interface taskInfo {
+  id: string;
   title: string;
   status: boolean;
 }
-
 
 // handle add tasks to localstorage
 const handleAddTask = (taskTitle: string, listName: string) => {
@@ -13,7 +13,7 @@ const handleAddTask = (taskTitle: string, listName: string) => {
     const updatedTaskList = JSON.parse(taskList);
     updatedTaskList.forEach((list: any) => {
       if (Object.keys(list)[0] === listName) {
-        const taskObj: taskInfo = { title: "", status: false };
+        const taskObj: taskInfo = { id: uniqueID(), title: "", status: false };
         const selectedList = list[listName];
         taskObj.title = taskTitle.trim();
         selectedList.push(taskObj);
