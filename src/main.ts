@@ -6,6 +6,8 @@ import renderRegisterPage from "./components/registerForm";
 import renderStars from "./components/addStars";
 import renderAppBoxes from "./components/renderAppBoxes";
 
+
+
 const loading = document.querySelector<HTMLDivElement>("#loading");
 
 window.addEventListener("load", () => {

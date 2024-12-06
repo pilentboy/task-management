@@ -31,7 +31,6 @@ const renderGroups = () => {
       renderTaskList(e.srcElement.id);
     });
     groupContainer.append(li);
-    
   });
   return groupContainer;
 };
@@ -49,7 +48,6 @@ const renderTaskList = (groupTitle: string) => {
   groupDataObj.forEach((list: any) => {
     if (Object.keys(list)[0] === groupTitle) {
       const selectedList = list[groupTitle];
-      console.log(selectedList);
       selectedList.forEach((task: any) => {
         const li = document.createElement("div");
         li.className = "flex items-center justify-between w-full";
@@ -59,28 +57,47 @@ const renderTaskList = (groupTitle: string) => {
         const taskStatusBTN = document.createElement("button");
         taskStatusBTN.type = "button";
         taskStatusBTN.className = `border rounded-full w-6 h-6 ${
-          task.status ? "bg-green-600" : "bg-gray-200"
+          task.status == true ? "bg-green-600" : "bg-gray-200"
         }`;
         // ///// handle change task status
-        taskStatusBTN.addEventListener("click",()=>{
-
-        })
+        taskStatusBTN.addEventListener("click", () => {
+          handleChangeTaskStatus(task.id, groupTitle);
+        });
         right.append(taskStatusBTN);
         const title = document.createElement("li");
         title.className = "text-white text-sm";
         title.textContent = task.title;
         right.append(title);
         li.append(right);
-        // task date 
-        const date=document.createElement("span")
-        date.className='text-gray-300 text-[12px]'
-        date.textContent='1403/10/25'
-        li.append(date)
+        // task date
+        const date = document.createElement("span");
+        date.className = "text-gray-300 text-[12px]";
+        date.textContent = "1403/10/25";
+        li.append(date);
         ul.append(li);
       });
     }
   });
   groupContainer?.append(ul);
 };
-export {renderTaskList}
+
+const handleChangeTaskStatus = (id: string, groupTitle: string) => {
+  const groupData = localStorage.getItem("groups");
+  const groupDataObj = groupData ? JSON.parse(groupData) : null;
+  groupDataObj.forEach((group: any) => {
+    if (Object.keys(group)[0] === groupTitle) {
+      group[groupTitle].forEach((task: any) => {
+        if (task.id === id) {
+          task.status ? (task.status = false) : (task.status = true);
+        }
+      });
+    }
+  });
+  localStorage.setItem("groups", JSON.stringify(groupDataObj));
+  document.querySelector("#taskList")?.remove();
+  renderTaskList(groupTitle);
+};
+
+
+export { renderTaskList };
 export default groupManager;
