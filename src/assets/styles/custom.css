@@ -10,9 +10,10 @@ body {
   overflow-x: hidden;
 }
 
-::-webkit-scrollbar{
+body::-webkit-scrollbar {
   display: none;
 }
+
 
 h2 {
   line-height: 40px !important;

@@ -1,3 +1,8 @@
+interface taskInfo {
+  title: string;
+  status: boolean;
+}
+
 // handle add tasks to localstorage
 const handleAddTask = (taskTitle: string, listName: string) => {
   const taskList = localStorage.getItem("groups");
@@ -5,8 +10,10 @@ const handleAddTask = (taskTitle: string, listName: string) => {
     const updatedTaskList = JSON.parse(taskList);
     updatedTaskList.forEach((list: any) => {
       if (Object.keys(list)[0] === listName) {
+        const taskObj: taskInfo = { title: "", status: false };
         const selectedList = list[listName];
-        selectedList.push(taskTitle.trim());
+        taskObj.title = taskTitle.trim();
+        selectedList.push(taskObj);
         list[listName] = selectedList;
         localStorage.setItem("groups", JSON.stringify(updatedTaskList));
       }

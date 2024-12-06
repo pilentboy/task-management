@@ -1,3 +1,5 @@
+import modalContainer from "../modals/modalContainer";
+import groupManager from "./groupManager";
 
 const renderGroupBox = () => {
   const groupBox = document.createElement("div");
@@ -13,9 +15,8 @@ const renderGroupBox = () => {
     "duration-500 w-28 absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center";
   groupBoxToggler.append(icon);
   groupBox.append(groupBoxToggler);
-
   groupBox.addEventListener("click", () => {
-    // modalContainer();
+    modalContainer(groupManager());
   });
   return groupBox;
 };
