@@ -1,15 +1,15 @@
 import { renderTaskList } from "../components/groupManager";
 
-const handleChangeTaskStatus = (id: string, groupTitle: string) => {
+const handleDeleteTask = (groupTitle: string, id: string) => {
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
-  groupDataObj.forEach((group: any) => {
+
+  groupDataObj.forEach((group: any, index: number) => {
     if (Object.keys(group)[0] === groupTitle) {
-      group[groupTitle].forEach((task: any) => {
-        if (task.id === id) {
-          task.status ? (task.status = false) : (task.status = true);
-        }
-      });
+      const updatedTask = group[groupTitle].filter(
+        (task: any) => task.id !== id
+      );
+      groupDataObj[index][groupTitle] = updatedTask;
     }
   });
   localStorage.setItem("groups", JSON.stringify(groupDataObj));
@@ -17,4 +17,4 @@ const handleChangeTaskStatus = (id: string, groupTitle: string) => {
   renderTaskList(groupTitle);
 };
 
-export default handleChangeTaskStatus;
+export default handleDeleteTask;

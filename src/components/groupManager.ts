@@ -1,8 +1,11 @@
+import handleChangeTaskStatus from "../utils/handleTaskStatus";
+import handleDeleteTask from "../utils/handleDeleteTask";
+
 const groupManager = () => {
   const container = document.createElement("div");
   container.id = "groupManager";
   container.className =
-    "w-[400px] h-[450px] border-2 border-slate-800 rounded-lg flex flex-col p-2 add-task-bg";
+    "w-[95%] sm:w-[400px] h-[450px] border-2 border-slate-800 rounded-lg flex flex-col p-2 add-task-bg";
 
   //  group list
   const groupListContainer = document.createElement("div");
@@ -40,8 +43,7 @@ const renderTaskList = (groupTitle: string) => {
 
   const ul = document.createElement("ul");
   ul.id = "taskList";
-  ul.className =
-    "flex flex-col gap-4 mt-2 p-2 bg-slate-900 h-full overflow-y-auto";
+  ul.className = "flex flex-col gap-4 mt-2 p-2 bg-slate-900 h-full ";
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
 
@@ -54,15 +56,42 @@ const renderTaskList = (groupTitle: string) => {
         // task status
         const right = document.createElement("div");
         right.className = "flex items-center gap-3";
+
+        // task setting btn
+        const taskSettingBTN = document.createElement("button");
+        taskSettingBTN.type = "button";
+        taskSettingBTN.className = "relative overflow-visible task-setting";
+
+        const taskSettingBox = document.createElement("div");
+        taskSettingBox.className =
+          "w-10 h-10 rounded-md hidden items-center justify-center bg-gray-900 absolute top-0 left-0 tast-setting-box z-10";
+        const deleteBTN = document.createElement("img");
+        deleteBTN.className = "w-5";
+        deleteBTN.src = "/task-management/svg/garbage-trash-svgrepo-com.svg";
+        deleteBTN.addEventListener("click", () =>
+          handleDeleteTask(groupTitle, task.id)
+        );
+        taskSettingBox.append(deleteBTN);
+
+        taskSettingBTN.append(taskSettingBox);
+        const icon = document.createElement("img");
+        icon.src = "/task-management/svg/dot-menu-more-svgrepo-com.svg";
+        icon.className = "w-4";
+        taskSettingBTN.append(icon);
+        right.append(taskSettingBTN);
+        //  end task setting btn
+
         const taskStatusBTN = document.createElement("button");
         taskStatusBTN.type = "button";
         taskStatusBTN.className = `border rounded-full w-6 h-6 ${
           task.status == true ? "bg-green-600" : "bg-gray-200"
         }`;
+
         // ///// handle change task status
         taskStatusBTN.addEventListener("click", () => {
           handleChangeTaskStatus(task.id, groupTitle);
         });
+
         right.append(taskStatusBTN);
         const title = document.createElement("li");
         title.className = "text-white text-sm";
@@ -72,7 +101,7 @@ const renderTaskList = (groupTitle: string) => {
         // task date
         const date = document.createElement("span");
         date.className = "text-gray-300 text-[12px]";
-        date.textContent = "1403/10/25";
+        date.textContent = task.date;
         li.append(date);
         ul.append(li);
       });
@@ -80,24 +109,6 @@ const renderTaskList = (groupTitle: string) => {
   });
   groupContainer?.append(ul);
 };
-
-const handleChangeTaskStatus = (id: string, groupTitle: string) => {
-  const groupData = localStorage.getItem("groups");
-  const groupDataObj = groupData ? JSON.parse(groupData) : null;
-  groupDataObj.forEach((group: any) => {
-    if (Object.keys(group)[0] === groupTitle) {
-      group[groupTitle].forEach((task: any) => {
-        if (task.id === id) {
-          task.status ? (task.status = false) : (task.status = true);
-        }
-      });
-    }
-  });
-  localStorage.setItem("groups", JSON.stringify(groupDataObj));
-  document.querySelector("#taskList")?.remove();
-  renderTaskList(groupTitle);
-};
-
 
 export { renderTaskList };
 export default groupManager;

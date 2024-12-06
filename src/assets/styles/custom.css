@@ -14,7 +14,6 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-
 h2 {
   line-height: 40px !important;
 }
@@ -88,4 +87,9 @@ h2 {
     rgba(0, 0, 0, 1) 91%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#000000",GradientType=1);
+}
+
+/* task setting */
+.task-setting:hover  .tast-setting-box {
+  display: flex !important;
 }
