@@ -83,7 +83,7 @@ const renderAddTaskForm = () => {
         taskBoxToggler?.classList.remove("animation-remove");
 
         addTaskBox?.classList.remove(
-          "sm:w-96",
+          "sm:w-[400px]",
           "justify-start",
           "items-start",
           "h-64"

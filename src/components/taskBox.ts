@@ -4,7 +4,7 @@ const renderTaskBox = () => {
   const taskBox = document.createElement("div");
   taskBox.id = "addTaskBox";
   taskBox.className =
-    "w-[90%] h-48 flex flex-col relative	items-center justify-center  sm:h-64 border-l-[4px] border-r-[4px] p-4 border-slate-900 overflow-hidden sm:w-64 duration-300";
+    "w-[90%] h-48 flex flex-col relative	items-center  sm:h-64 border-l-2 border-r-2 p-4 border-slate-900 overflow-hidden sm:w-64 duration-300";
   const taskBoxToggler = document.createElement("button");
   taskBoxToggler.id = "taskBoxToggler";
   taskBoxToggler.type = "button";
@@ -17,8 +17,13 @@ const renderTaskBox = () => {
     taskBoxToggler.classList.add("animation-remove");
     taskBoxToggler.disabled = true;
     setTimeout(() => {
-      taskBox.classList.remove("sm:w-64", "rotate-90","h-48");
-      taskBox.classList.add("sm:w-96", "justify-start", "items-start","h-64");
+      taskBox.classList.remove("sm:w-64", "rotate-90", "h-48");
+      taskBox.classList.add(
+        "sm:w-[400px]",
+        "justify-start",
+        "items-start",
+        "h-64"
+      );
       taskBox.append(renderAddTaskForm());
       taskBoxToggler.disabled = false;
     }, 500);
