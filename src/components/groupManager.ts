@@ -5,7 +5,7 @@ const groupManager = () => {
   const container = document.createElement("div");
   container.id = "groupManager";
   container.className =
-    "w-[95%] sm:w-[400px] h-[450px] border-2 border-slate-800 rounded-lg flex flex-col p-2 add-task-bg";
+    "w-[95%] sm:w-[400px] h-[450px] border-2 border-slate-800 rounded-lg flex flex-col p-2 add-task-bg animate__fadeIn animate__animated";
 
   //  group list
   const groupListContainer = document.createElement("div");
@@ -21,13 +21,13 @@ const renderGroups = () => {
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
   const groupContainer = document.createElement("ul");
   groupContainer.className =
-    "w-full flex items-center gap-4 overflow-hidden px-2";
+    "w-full flex items-center gap-2 overflow-hidden px-2";
   groupDataObj.forEach((group: any) => {
     const groupTitle = Object.keys(group)[0];
     const li = document.createElement("li");
     li.id = groupTitle;
     li.className =
-      "text-white text-sm hover:scale-105 duration-150 cursor-pointer group-title";
+      "text-white text-sm cursor-pointer group-title border border-white p-1 rounded-md";
     li.textContent = groupTitle;
     li.addEventListener("click", (e: any) => {
       document.querySelector("#taskList")?.remove();
@@ -83,13 +83,45 @@ const renderTaskList = (groupTitle: string) => {
 
         const taskStatusBTN = document.createElement("button");
         taskStatusBTN.type = "button";
-        taskStatusBTN.className = `border rounded-full w-6 h-6 ${
-          task.status == true ? "bg-green-600" : "bg-gray-200"
-        }`;
+        taskStatusBTN.className = "w-6 h-6 bg-trasnparent";
 
+        const taskStatusIcon = document.createElement("img");
+        taskStatusIcon.className = "w-fit h-fit  animate__animated";
+        task.status
+          ? (taskStatusIcon.src =
+              "/task-management/svg/tick-circle-svgrepo-com.svg")
+          : (taskStatusIcon.src =
+              "/task-management/svg/circle-svgrepo-com.svg");
+        taskStatusBTN.append(taskStatusIcon);
         // ///// handle change task status
+        let taskStatusChangeDetector: boolean = false; // remove hover event when changing status
         taskStatusBTN.addEventListener("click", () => {
-          handleChangeTaskStatus(task.id, groupTitle);
+          taskStatusChangeDetector = true;
+          if (!task.status) {
+            taskStatusIcon.src =
+              "/task-management/svg/tick-circle-svgrepo-com.svg";
+            taskStatusIcon.classList.add("animate__rubberBand");
+
+            setTimeout(() => {
+              handleChangeTaskStatus(task.id, groupTitle);
+            }, 900);
+          } else {
+            handleChangeTaskStatus(task.id, groupTitle);
+          }
+        });
+        taskStatusBTN.addEventListener("mouseenter", () => {
+          if (!task.status && !taskStatusChangeDetector) {
+            console.log("x");
+            taskStatusIcon.src =
+              "/task-management/svg/tick-circle-svgrepo-com.svg";
+          }
+        });
+        taskStatusBTN.addEventListener("mouseleave", () => {
+          if (!task.status && !taskStatusChangeDetector) {
+            console.log("x");
+            taskStatusIcon.src = taskStatusIcon.src =
+              "/task-management/svg/circle-svgrepo-com.svg";
+          }
         });
 
         right.append(taskStatusBTN);
