@@ -111,14 +111,12 @@ const renderTaskList = (groupTitle: string) => {
         });
         taskStatusBTN.addEventListener("mouseenter", () => {
           if (!task.status && !taskStatusChangeDetector) {
-            console.log("x");
             taskStatusIcon.src =
               "/task-management/svg/tick-circle-svgrepo-com.svg";
           }
         });
         taskStatusBTN.addEventListener("mouseleave", () => {
           if (!task.status && !taskStatusChangeDetector) {
-            console.log("x");
             taskStatusIcon.src = taskStatusIcon.src =
               "/task-management/svg/circle-svgrepo-com.svg";
           }
