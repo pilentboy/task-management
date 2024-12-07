@@ -17,6 +17,7 @@ const renderGroupBox = () => {
   groupBox.append(groupBoxToggler);
   groupBox.addEventListener("click", () => {
     modalContainer(groupManager());
+    renderTaskList("وظایفم");
   });
   return groupBox;
 };
