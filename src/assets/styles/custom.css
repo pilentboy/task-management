@@ -90,6 +90,6 @@ h2 {
 }
 
 /* task setting */
-.task-setting:hover  .tast-setting-box {
+.task-setting:focus  .tast-setting-box {
   display: flex !important;
 }

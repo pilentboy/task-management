@@ -64,7 +64,7 @@ const renderTaskList = (groupTitle: string) => {
 
         const taskSettingBox = document.createElement("div");
         taskSettingBox.className =
-          "w-10 h-10 rounded-md hidden items-center justify-center bg-gray-900 absolute top-0 left-0 tast-setting-box z-10";
+          "w-10 h-10 top-5 rounded-md hidden items-center justify-center bg-black sm:bg-gray-900 absolute    sm:-top-2 sm:left-8 animate tast-setting-box z-10 animate__jackInTheBox animate__animated";
         const deleteBTN = document.createElement("img");
         deleteBTN.className = "w-5";
         deleteBTN.src = "/task-management/svg/garbage-trash-svgrepo-com.svg";
