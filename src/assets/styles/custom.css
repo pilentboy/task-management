@@ -90,6 +90,13 @@ h2 {
 }
 
 /* task setting */
-.task-setting:focus  .tast-setting-box {
+.task-setting:focus .tast-setting-box 
+
+{
+  display: flex !important;
+}
+
+/* task date */
+.task-date-btn:focus .date-box {
   display: flex !important;
 }

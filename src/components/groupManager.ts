@@ -43,7 +43,7 @@ const renderTaskList = (groupTitle: string) => {
 
   const ul = document.createElement("ul");
   ul.id = "taskList";
-  ul.className = "flex flex-col gap-4 mt-2 p-2 bg-slate-900 h-full ";
+  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full ";
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
 
@@ -64,13 +64,14 @@ const renderTaskList = (groupTitle: string) => {
 
         const taskSettingBox = document.createElement("div");
         taskSettingBox.className =
-          "w-10 h-10 top-5 rounded-md hidden items-center justify-center bg-black sm:bg-gray-900 absolute    sm:-top-2 sm:left-8 animate tast-setting-box z-10 animate__jackInTheBox animate__animated";
+          "w-10 h-10 -top-2 -left-10 rounded-md hidden items-center justify-center bg-black sm:bg-gray-900 absolute  sm:-top-2 sm:left-8 animate tast-setting-box z-10 animate__jackInTheBox animate__animated";
         const deleteBTN = document.createElement("img");
         deleteBTN.className = "w-5";
         deleteBTN.src = "/task-management/svg/garbage-trash-svgrepo-com.svg";
-        deleteBTN.addEventListener("click", () =>
-          handleDeleteTask(groupTitle, task.id)
-        );
+        deleteBTN.addEventListener("click", () => {
+          li.classList.add("animate__flipOutX");
+          setTimeout(() => handleDeleteTask(groupTitle, task.id), 600);
+        });
         taskSettingBox.append(deleteBTN);
 
         taskSettingBTN.append(taskSettingBox);
@@ -128,11 +129,39 @@ const renderTaskList = (groupTitle: string) => {
         title.textContent = task.title;
         right.append(title);
         li.append(right);
+
         // task date
-        const date = document.createElement("span");
-        date.className = "text-gray-300 text-[12px]";
-        date.textContent = task.date;
-        li.append(date);
+        // left options
+        const taskDateBTN = document.createElement("button");
+        taskDateBTN.type = "button";
+        taskDateBTN.className = "w-8 h-8 relative task-date-btn";
+        const taskDateBTNIcon = document.createElement("img");
+        taskDateBTNIcon.className = "w-fit h-fit";
+        taskDateBTNIcon.src =
+          "/task-management/svg/date-search-svgrepo-com.svg";
+        taskDateBTN.append(taskDateBTNIcon);
+
+        // date box
+        const dateBox = document.createElement("div");
+        dateBox.className =
+          "absolute left-10 -top-3 border border-white sm:border-none w-32 h-12 rounded-md hidden flex-col items-center justify-around date-box bg-slate-900 p-1 animate__fadeIn animate__animated sm:-left-36";
+        for (let i = 0; i < 2; i++) {
+          const date = document.createElement("span");
+          date.className = "text-white text-[12px]";
+          if (i === 0) {
+            date.textContent = `شروع:  ${task.createdDate}`;
+          } else {
+            if (!task.completedDate) {
+              date.className = "w-2 h-2 rounded-full bg-white animate-ping";
+            } else {
+              date.textContent = `پایان:  ${task.completedDate}`;
+            }
+          }
+          dateBox.append(date);
+        }
+        taskDateBTN.append(dateBox);
+        console.log(taskDateBTN);
+        li.append(taskDateBTN);
         ul.append(li);
       });
     }

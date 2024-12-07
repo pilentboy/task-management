@@ -4,7 +4,8 @@ interface taskInfo {
   id: string;
   title: string;
   status: boolean;
-  date: string;
+  createdDate: string;
+  completedDate: string | boolean;
 }
 
 // handle add tasks to localstorage
@@ -21,7 +22,8 @@ const handleAddTask = (taskTitle: string, listName: string) => {
           id: uniqueID(),
           title: "",
           status: false,
-          date: currentDate,
+          createdDate: currentDate,
+          completedDate: false,
         };
         const selectedList = list[listName];
         taskObj.title = taskTitle.trim();

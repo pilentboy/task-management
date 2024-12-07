@@ -7,7 +7,17 @@ const handleChangeTaskStatus = (id: string, groupTitle: string) => {
     if (Object.keys(group)[0] === groupTitle) {
       group[groupTitle].forEach((task: any) => {
         if (task.id === id) {
-          task.status ? (task.status = false) : (task.status = true);
+          if (task.status) {
+            task.status = false;
+            task.completedDate = false;
+          } else {
+            const date = new Date();
+            const currentDate = date.toLocaleString("fa-IR", {
+              dateStyle: "medium",
+            });
+            task.status = true;
+            task.completedDate = currentDate;
+          }
         }
       });
     }
