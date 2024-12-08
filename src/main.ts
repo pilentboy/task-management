@@ -6,7 +6,7 @@ import renderRegisterPage from "./components/registerForm";
 import renderStars from "./components/addStars";
 import renderAppBoxes from "./components/renderAppBoxes";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import { OrbitControls } from "three-stdlib";
 
 const loading = document.querySelector<HTMLDivElement>("#loading");
 
@@ -45,9 +45,6 @@ const setWelcomeMessage = () => {
   }
 };
 
-
-
-
 // 1. تنظیم صحنه (Scene)، دوربین (Camera) و رندرر (Renderer)
 
 const earthContainer = document.createElement("div");
@@ -61,7 +58,7 @@ earthContainer.style.backgroundColor = "transparaent";
 earthContainer.style.zIndex = "499";
 document.querySelector(".container")?.appendChild(earthContainer);
 
-earthContainer.className='sm:hidden'
+earthContainer.className = "sm:hidden";
 const scene = new THREE.Scene();
 scene.background = null;
 let camera = new THREE.PerspectiveCamera(
