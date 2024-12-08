@@ -10,10 +10,10 @@ import addNewGroups from "../modals/addNewGroups";
 const renderAddTaskForm = () => {
   const form = document.createElement("form");
   form.setAttribute("id", "addTaskForm");
-  form.className = "w-full";
+  form.className = "w-full  hidden sm:block";
   const div = document.createElement("div");
   div.id = "formContainer";
-  div.className = "flex flex-col gap-2 add-task-bg";
+  div.className = "flex flex-col gap-2 add-task-bg ";
   form.append(div);
   const getUsername = localStorage.getItem("username");
   const title = document.createElement("label");
@@ -72,6 +72,23 @@ const renderAddTaskForm = () => {
   addListBTN.addEventListener("click", addNewGroups);
   selectContainer.append(addListBTN);
   div.append(selectContainer);
+  window.addEventListener("resize", () => {
+    if (window.innerWidth < 640) {
+      form.remove();
+      const taskBoxToggler = document.querySelector("#taskBoxToggler");
+      const addTaskBox = document.querySelector("#addTaskBox");
+
+      taskBoxToggler?.classList.remove("animation-remove");
+
+      addTaskBox?.classList.remove(
+        "sm:w-[400px]",
+        "justify-start",
+        "items-start",
+        "h-64"
+      );
+      addTaskBox?.classList.add("sm:w-64", "h-24");
+    }
+  });
 
   div.append(
     renderButtonContianer(
@@ -88,7 +105,7 @@ const renderAddTaskForm = () => {
           "items-start",
           "h-64"
         );
-        addTaskBox?.classList.add("sm:w-64", "h-48");
+        addTaskBox?.classList.add("sm:w-64", "h-24");
       }),
       renderSubmitBTN("submitTaskBTN", "افزودن", false)
     )

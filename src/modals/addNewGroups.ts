@@ -16,6 +16,12 @@ const addNewGroups = () => {
     addListInput.placeholder = "نام دسته ی جدید...";
     addListInput.id = "addListInput";
     div.append(addListInput);
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth < 640) {
+        form.remove();
+      }
+    });
     div.append(
       renderButtonContianer(
         renderCloseBTN(() => {
