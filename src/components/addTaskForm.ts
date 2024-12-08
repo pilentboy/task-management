@@ -75,21 +75,20 @@ const renderAddTaskForm = () => {
   div.append(selectContainer);
 
   window.addEventListener("resize", () => {
-    if (window.innerWidth < 640) {
-      form.remove();
-      const taskBoxToggler = document.querySelector("#taskBoxToggler");
-      const addTaskBox = document.querySelector("#addTaskBox");
+    form.remove();
+    document.querySelector("#modalContainer")?.remove();
+    const taskBoxToggler = document.querySelector("#taskBoxToggler");
+    const addTaskBox = document.querySelector("#addTaskBox");
 
-      taskBoxToggler?.classList.remove("animation-remove");
+    taskBoxToggler?.classList.remove("animation-remove");
 
-      addTaskBox?.classList.remove(
-        "sm:w-[400px]",
-        "justify-start",
-        "items-start",
-        "h-64"
-      );
-      addTaskBox?.classList.add("sm:w-64", "h-24");
-    }
+    addTaskBox?.classList.remove(
+      "sm:w-[400px]",
+      "justify-start",
+      "items-start",
+      "h-64"
+    );
+    addTaskBox?.classList.add("sm:w-64", "h-24");
   });
 
   div.append(

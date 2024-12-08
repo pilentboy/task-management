@@ -15,10 +15,10 @@ const renderStars = (): void => {
     "top-0",
     "left-0",
     "fixed",
-    "z-[-1]",
+    "z-[500]",
     "px-10"
   );
-  const starsCount = 20;
+  const starsCount = 10;
   for (let i = 0; i <= starsCount; i++) {
     const star = document.createElement("span");
     star.classList.add("star", "absolute");

@@ -28,6 +28,7 @@ const addNewGroups = () => {
 
   window.addEventListener("resize", () => {
     if (window.innerWidth < 640) {
+      document.querySelector("#modalContainer")?.remove();
       form.remove();
     }
   });

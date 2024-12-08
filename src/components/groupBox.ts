@@ -5,7 +5,7 @@ const renderGroupBox = () => {
   const groupBox = document.createElement("div");
   groupBox.id = "groupBox";
   groupBox.className =
-    "w-[90px] h-20 flex flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
+    "w-[90px] z-[800] h-20 flex flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
   const groupBoxToggler = document.createElement("button");
   groupBoxToggler.id = "groupBoxToggler";
   groupBoxToggler.type = "button";

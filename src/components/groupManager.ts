@@ -5,7 +5,7 @@ const groupManager = () => {
   const container = document.createElement("div");
   container.id = "groupManager";
   container.className =
-    "w-[95%] sm:w-[400px] h-[450px] border-2 border-slate-800 rounded-lg flex flex-col p-2 add-task-bg animate__fadeIn animate__animated";
+    "w-[350px] sm:w-[400px] h-[450px] border-2 border-slate-800 rounded-lg flex flex-col p-2 add-task-bg animate__fadeIn animate__animated";
 
   //  group list
   const groupListContainer = document.createElement("div");
