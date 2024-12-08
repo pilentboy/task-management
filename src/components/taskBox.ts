@@ -1,3 +1,4 @@
+import modalContainer from "../modals/modalContainer";
 import renderAddTaskForm from "./addTaskForm";
 
 const renderTaskBox = () => {
@@ -16,7 +17,7 @@ const renderTaskBox = () => {
 
   taskBoxToggler.addEventListener("click", () => {
     if (window.innerWidth < 640) {
-      alert("hi");
+      modalContainer(renderAddTaskForm());
     } else {
       taskBoxToggler.classList.add("animation-remove");
       taskBoxToggler.disabled = true;

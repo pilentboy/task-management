@@ -10,7 +10,8 @@ import addNewGroups from "../modals/addNewGroups";
 const renderAddTaskForm = () => {
   const form = document.createElement("form");
   form.setAttribute("id", "addTaskForm");
-  form.className = "w-full  hidden sm:block";
+  form.className =
+    "w-3/4 animate__fadeIn animate__animated  sm:w-full  sm:block ";
   const div = document.createElement("div");
   div.id = "formContainer";
   div.className = "flex flex-col gap-2 add-task-bg ";
@@ -72,6 +73,7 @@ const renderAddTaskForm = () => {
   addListBTN.addEventListener("click", addNewGroups);
   selectContainer.append(addListBTN);
   div.append(selectContainer);
+
   window.addEventListener("resize", () => {
     if (window.innerWidth < 640) {
       form.remove();
@@ -93,6 +95,7 @@ const renderAddTaskForm = () => {
   div.append(
     renderButtonContianer(
       renderCloseBTN(() => {
+        document.querySelector("#modalContainer")?.remove();
         form.remove();
         const taskBoxToggler = document.querySelector("#taskBoxToggler");
         const addTaskBox = document.querySelector("#addTaskBox");
