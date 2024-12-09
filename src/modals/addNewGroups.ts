@@ -16,7 +16,7 @@ const addNewGroups = () => {
   div.className =
     "absolute top-[10%] sm:top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-3/4 sm:h-full animate__fadeIn animate__animated    sm:border-none";
   const title=document.createElement("h2")
-  title.className='mb-5 text-white sm:hidden'
+  title.className='mb-2 text-white sm:hidden'
   title.textContent='ساخت لیست جدید'
   div.append(title)
   const addListInput = document.createElement("input");
@@ -26,12 +26,16 @@ const addNewGroups = () => {
   addListInput.id = "addListInput";
   div.append(addListInput);
 
+
+  
+
   window.addEventListener("resize", () => {
-    if (window.innerWidth < 640) {
+    if (!addListInput.focus && window.innerWidth < 640 ) {
       document.querySelector("#modalContainer")?.remove();
       form.remove();
     }
   });
+  
   div.append(
     renderButtonContianer(
       renderCloseBTN(() => {

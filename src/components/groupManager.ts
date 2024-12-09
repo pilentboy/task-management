@@ -5,12 +5,12 @@ const groupManager = () => {
   const container = document.createElement("div");
   container.id = "groupManager";
   container.className =
-    "w-[350px] sm:w-[400px] h-[450px] border-2 border-slate-800 rounded-lg flex flex-col p-2 add-task-bg animate__fadeIn animate__animated";
+    "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse pb-2 sm:p-2 add-task-bg animate__fadeIn animate__fast	animate__animated";
 
   //  group list
   const groupListContainer = document.createElement("div");
   groupListContainer.className =
-    "w-full border-b border-white h-12 flex items-center";
+    "w-full border-t border-white h-12 flex items-center";
   container.append(groupListContainer);
   groupListContainer.append(renderGroups());
   return container;
@@ -20,14 +20,15 @@ const renderGroups = () => {
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
   const groupContainer = document.createElement("ul");
+  groupContainer.id='groupContainer'
   groupContainer.className =
-    "w-full flex items-center gap-2 overflow-hidden px-2";
+    "w-full flex items-center gap-2 overflow-x-auto px-2 py-2";
   groupDataObj.forEach((group: any) => {
     const groupTitle = Object.keys(group)[0];
     const li = document.createElement("li");
     li.id = groupTitle;
     li.className =
-      "text-white text-sm cursor-pointer group-title border border-white p-1 rounded-md";
+      "text-white text-sm cursor-pointer group-title border border-white p-1 rounded-md hover:bg-[#121212]";
     li.textContent = groupTitle;
     li.addEventListener("click", (e: any) => {
       document.querySelector("#taskList")?.remove();
@@ -50,9 +51,11 @@ const renderTaskList = (groupTitle: string) => {
   groupDataObj.forEach((list: any) => {
     if (Object.keys(list)[0] === groupTitle) {
       const selectedList = list[groupTitle];
-      selectedList.forEach((task: any) => {
+      selectedList.forEach((task: any, index: number) => {
         const li = document.createElement("div");
-        li.className = "flex items-center justify-between w-full";
+        li.className = `flex items-center justify-between w-full rounded-md p-1 ${
+          index % 2 === 0 ? "bg-gray-900" : "bg-transparent"
+        }`;
         // task status
         const right = document.createElement("div");
         right.className = "flex items-center gap-3";
@@ -160,7 +163,6 @@ const renderTaskList = (groupTitle: string) => {
           dateBox.append(date);
         }
         taskDateBTN.append(dateBox);
-        console.log(taskDateBTN);
         li.append(taskDateBTN);
         ul.append(li);
       });

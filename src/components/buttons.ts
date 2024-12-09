@@ -28,7 +28,7 @@ const renderSubmitBTN = (
 ) => {
   const submitTask = document.createElement("button");
   submitTask.textContent = title;
-  submitTask.className = `self-center px-6 py-2  text-white outline-none border border-white rounded-md duration-150 relative overflow-hidden ${
+  submitTask.className = `self-center w-20 h-9  py-1 text-white outline-none border border-white rounded-md duration-150 relative overflow-hidden ${
     hoverStyle ? "animation-btn" : null
   }`;
   submitTask.setAttribute("id", btnID);

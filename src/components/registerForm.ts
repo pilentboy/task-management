@@ -33,6 +33,7 @@ const renderRegisterForm = () => {
     "w-80",
     "px-4",
     "py-4",
+    "z-[1000]",
     "rounded-md",
     "border-[2px]",
     "duration-200",
@@ -70,6 +71,7 @@ const renderRegisterPage = (): void => {
     "left-1/2",
     "translate-x-[-50%]",
     "translate-y-[-50%]",
+    "z-[1000]",
     "flex",
     "items-center",
     "flex-col"

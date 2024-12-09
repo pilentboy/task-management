@@ -62,7 +62,7 @@ earthContainer.className = "sm:hidden";
 const scene = new THREE.Scene();
 scene.background = null;
 let camera = new THREE.PerspectiveCamera(
-  130,
+  110,
   window.innerWidth / window.innerHeight,
   1,
   100

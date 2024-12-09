@@ -5,7 +5,7 @@ const renderProfileBox = () => {
   const profileBox = document.createElement("div");
   profileBox.id = "profileBox";
   profileBox.className =
-    "w-[90px] h-20 z-[800] flex flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
+    "w-[75px] h-20 z-[800] flex flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
   const profileBoxToggler = document.createElement("button");
   profileBoxToggler.id = "groupBoxToggler";
   profileBoxToggler.type = "button";
