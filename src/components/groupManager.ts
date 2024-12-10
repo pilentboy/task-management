@@ -44,7 +44,7 @@ const renderTaskList = (groupTitle: string) => {
 
   const ul = document.createElement("ul");
   ul.id = "taskList";
-  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full ";
+  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full overflow-y-auto";
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
 
