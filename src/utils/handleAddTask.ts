@@ -9,7 +9,7 @@ interface taskInfo {
 }
 
 // handle add tasks to localstorage
-const handleAddTask = (taskTitle: string, listName: string) => {
+const handleAddTask = (taskTitle: string, listName: any) => {
   const date = new Date();
   const currentDate = date.toLocaleString("fa-IR", { dateStyle: "medium" });
 

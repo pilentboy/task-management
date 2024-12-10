@@ -15,7 +15,6 @@ const renderCloseBTN = (action: any) => {
   icon.src = "/task-management/svg/close-square-svgrepo-com.svg";
   icon.className = "w-10 h-10";
   button.append(icon);
-  console.log("xx");
   button.addEventListener("click", action);
   return button;
 };

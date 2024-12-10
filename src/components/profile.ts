@@ -17,8 +17,7 @@ const profile = () => {
     "flex flex-col gap-2 items-center justify-center w-full h-full";
   const changeUsernameInput = document.createElement("input");
   changeUsernameInput.id = "changeUsernameInput";
-  changeUsernameInput.className =
-    "w-full p-2 outline-none placeholder:text-gray-600 bg-white text-black border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
+  changeUsernameInput.className = "input input-bordered w-full max-w-xs";
   changeUsernameInput.placeholder = "تغییر نام کاربری";
   div.append(changeUsernameInput);
 
@@ -39,6 +38,8 @@ const profile = () => {
     ) {
       localStorage.setItem("username", changeUsernameInput.value);
       location.reload();
+    } else {
+      changeUsernameInput.classList.add("border-red-500");
     }
   });
   container.append(form);

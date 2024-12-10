@@ -14,28 +14,24 @@ const addNewGroups = () => {
   const div = document.createElement("div");
   form.append(div);
   div.className =
-    "absolute top-[10%] sm:top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-3/4 sm:h-full animate__slideInDown animate__fast animate__animated    sm:border-none";
-  const title=document.createElement("h2")
-  title.className='mb-2 text-white '
-  title.textContent='افزودن دسته جدید'
-  div.append(title)
+    "absolute top-[10%] sm:top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-3/4 sm:h-full animate__bounceInDown animate__fast animate__animated    sm:border-none";
+  const title = document.createElement("h2");
+  title.className = "mb-2 text-white ";
+  title.textContent = "افزودن دسته جدید";
+  div.append(title);
   const addListInput = document.createElement("input");
-  addListInput.className =
-    "w-3/4 p-2 outline-none placeholder:text-gray-600 bg-white text-black border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
+  addListInput.className = "input input-bordered w-full max-w-xs";
   addListInput.placeholder = "نام دسته جدید";
   addListInput.id = "addListInput";
   div.append(addListInput);
 
-
-  
-
   window.addEventListener("resize", () => {
-    if (!addListInput.focus && window.innerWidth < 640 ) {
+    if (!addListInput.focus && window.innerWidth < 640) {
       document.querySelector("#modalContainer")?.remove();
       form.remove();
     }
   });
-  
+
   div.append(
     renderButtonContianer(
       renderCloseBTN(() => {
@@ -58,7 +54,6 @@ const addNewGroups = () => {
       localStorage.setItem("groups", JSON.stringify(updatedTaskList));
       addListInput.value = "";
     } else {
-      addListInput.classList.remove("border-slate-400");
       addListInput.classList.add("border-red-500", "border-2");
     }
   });

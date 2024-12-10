@@ -14,20 +14,8 @@ body::-webkit-scrollbar {
   display: none;
 }
 
-#groupContainer::-webkit-scrollbar {
-  height: 7px;
-  background-color: #0f172a;
-}
-
-#groupContainer::-webkit-scrollbar-thumb {
-  background: rgb(255, 255, 255);
-  border: 1px solid #0f172a;
-  border-radius: 10px;
-  cursor: grabbing;
-}
-
 #taskList::-webkit-scrollbar {
-  display: none;
+  display: none !important;
 }
 
 h2 {
