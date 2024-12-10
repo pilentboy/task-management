@@ -1,12 +1,12 @@
 import modalContainer from "../modals/modalContainer";
-import groupManager, { renderTaskList } from "./groupManager";
+import taskManagerContainer, { renderTaskList } from "./taskManager";
 
 const renderGroupBox = () => {
   const groupBox = document.createElement("div");
 
   groupBox.id = "groupBox";
   groupBox.className =
-    "w-[75px] z-[800] h-20 flex flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
+    "w-[75px] z-[800] h-20 flex  flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
   const groupBoxToggler = document.createElement("button");
   groupBoxToggler.id = "groupBoxToggler";
   groupBoxToggler.type = "button";
@@ -18,13 +18,13 @@ const renderGroupBox = () => {
   groupBox.append(groupBoxToggler);
 
   groupBox.addEventListener("click", () => {
-    modalContainer(groupManager());
+    modalContainer(taskManagerContainer());
 
-    const groupManagerContainer = document.querySelector("#groupManager");
+    const groupManager = document.querySelector("#taskManagerContainer");
 
     if (window.innerWidth < 640) {
       setTimeout(() => {
-        groupManagerContainer?.classList.remove("translate-y-[100%]");
+        groupManager?.classList.remove("translate-y-[100%]");
       }, 200);
     }
     renderTaskList("وظایفم");

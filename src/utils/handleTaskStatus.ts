@@ -1,4 +1,4 @@
-import { renderTaskList } from "../components/groupManager";
+import { renderTaskList } from "../components/taskManager";
 
 const handleChangeTaskStatus = (id: string, groupTitle: string) => {
   const groupData = localStorage.getItem("groups");

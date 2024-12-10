@@ -1,7 +1,7 @@
 import modalContainer from "../modals/modalContainer";
 import renderAddTaskForm from "./addTaskForm";
 
-const renderTaskBox = () => {
+const renderAddTaskBox = () => {
   const taskBox = document.createElement("div");
   taskBox.id = "addTaskBox";
   taskBox.className =
@@ -39,4 +39,4 @@ const renderTaskBox = () => {
   return taskBox;
 };
 
-export default renderTaskBox;
+export default renderAddTaskBox;

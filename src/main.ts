@@ -3,7 +3,7 @@ import "./assets/styles/animation.css";
 import "./assets/styles/custom.css";
 import "animate.css";
 import renderRegisterPage from "./components/registerForm";
-import renderStars from "./components/addStars";
+import renderStars from "./components/stars";
 import renderAppBoxes from "./components/renderAppBoxes";
 import * as THREE from "three";
 import { OrbitControls } from "three-stdlib";

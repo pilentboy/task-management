@@ -1,9 +1,9 @@
 import handleChangeTaskStatus from "../utils/handleTaskStatus";
 import handleDeleteTask from "../utils/handleDeleteTask";
 
-const groupManager = () => {
+const taskManagerContainer = () => {
   const container = document.createElement("div");
-  container.id = "groupManager";
+  container.id = "taskManagerContainer";
   container.className =
     "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse pb-2 sm:p-2 add-task-bg animate__fadeIn animate__fast	animate__animated";
 
@@ -40,11 +40,11 @@ const renderGroups = () => {
 };
 
 const renderTaskList = (groupTitle: string) => {
-  const groupContainer = document.querySelector("#groupManager");
+  const groupContainer = document.querySelector("#taskManagerContainer");
 
   const ul = document.createElement("ul");
   ul.id = "taskList";
-  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full overflow-y-auto";
+  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full overflow-y-auto ";
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
 
@@ -172,4 +172,4 @@ const renderTaskList = (groupTitle: string) => {
 };
 
 export { renderTaskList };
-export default groupManager;
+export default taskManagerContainer;
