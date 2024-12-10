@@ -15,7 +15,7 @@ body::-webkit-scrollbar {
 }
 
 #groupContainer::-webkit-scrollbar {
-  height:7px;
+  height: 7px;
   background-color: #0f172a;
 }
 
@@ -24,6 +24,10 @@ body::-webkit-scrollbar {
   border: 1px solid #0f172a;
   border-radius: 10px;
   cursor: grabbing;
+}
+
+#taskList::-webkit-scrollbar {
+  display: none;
 }
 
 h2 {
