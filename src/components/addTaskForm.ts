@@ -38,7 +38,11 @@ const renderAddTaskForm = () => {
   const selectContainer = document.createElement("div");
   selectContainer.className = "flex items-center gap-1";
 
-  const groupSelectElement = renderGroupSelect();
+  const groupSelectElement = renderGroupSelect(
+    "w-1/2",
+    "tasksListSelect",
+    null
+  );
   selectContainer.append(groupSelectElement);
 
   const addListBTN = document.createElement("button");

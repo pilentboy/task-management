@@ -1,42 +1,36 @@
 import handleChangeTaskStatus from "../utils/handleTaskStatus";
 import handleDeleteTask from "../utils/handleDeleteTask";
+import renderGroupSelect from "./groupSelect";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
   container.id = "taskManagerContainer";
   container.className =
-    "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse pb-2 sm:p-2 add-task-bg animate__fadeIn animate__fast	animate__animated";
+    "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated";
 
   //  group list
   const groupListContainer = document.createElement("div");
   groupListContainer.className =
-    "w-full border-t border-white h-12 flex items-center";
+    "w-full border-t border-slate-800 h-18 flex items-center py-1";
   container.append(groupListContainer);
   groupListContainer.append(renderGroups());
   return container;
 };
 
 const renderGroups = () => {
-  const groupData = localStorage.getItem("groups");
-  const groupDataObj = groupData ? JSON.parse(groupData) : null;
-  const groupContainer = document.createElement("ul");
-  groupContainer.id='groupContainer'
-  groupContainer.className =
-    "w-full flex items-center gap-2 overflow-x-auto px-2 py-2";
-  groupDataObj.forEach((group: any) => {
-    const groupTitle = Object.keys(group)[0];
-    const li = document.createElement("li");
-    li.id = groupTitle;
-    li.className =
-      "text-white text-sm cursor-pointer group-title border border-white p-1 rounded-md hover:bg-[#121212]";
-    li.textContent = groupTitle;
-    li.addEventListener("click", (e: any) => {
+  const taskOptionsContainer = document.createElement("div");
+  taskOptionsContainer.id = "taskOptionsContainer";
+  taskOptionsContainer.className =
+    "w-full flex items-center gap-2 overflow-x-auto px-2";
+
+  taskOptionsContainer.append(
+    renderGroupSelect("w-[100px] h-1/2","changeTaskRenderedList", (e: any) => {
       document.querySelector("#taskList")?.remove();
-      renderTaskList(e.srcElement.id);
-    });
-    groupContainer.append(li);
-  });
-  return groupContainer;
+      renderTaskList(e.target.value);
+    })
+  );
+
+  return taskOptionsContainer;
 };
 
 const renderTaskList = (groupTitle: string) => {

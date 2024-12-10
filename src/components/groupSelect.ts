@@ -1,8 +1,18 @@
-const renderGroupSelect = () => {
+const renderGroupSelect = (
+  size: string,
+  id: string,
+  action: CallableFunction | null
+) => {
   const tasksListSelect = document.createElement("select");
-  tasksListSelect.name = "tasksListSelect";
-  tasksListSelect.id = "tasksListSelect";
-  tasksListSelect.className = "select select-bordered w-1/2 max-w-xs";
+  tasksListSelect.name = id;
+  tasksListSelect.id = id;
+  tasksListSelect.className = `select select-bordered max-w-xs ${size}`;
+
+  if (action) {
+    tasksListSelect.addEventListener("change", (e) => {
+      action(e);
+    });
+  }
 
   const taskListNames = localStorage.getItem("groups") || null;
   if (taskListNames) {
@@ -27,7 +37,7 @@ const renderGroupSelect = () => {
       "border-slate-400 bg-transparent  hover:border-slate-800 focus:border-slate-800 duration-150 ";
     tasksListSelect.append(option);
   }
-  return tasksListSelect
+  return tasksListSelect;
 };
 
 export default renderGroupSelect;
