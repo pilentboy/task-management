@@ -14,15 +14,15 @@ const addNewGroups = () => {
   const div = document.createElement("div");
   form.append(div);
   div.className =
-    "absolute top-[10%] sm:top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-3/4 sm:h-full animate__fadeIn animate__animated    sm:border-none";
+    "absolute top-[10%] sm:top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-3/4 sm:h-full animate__slideInDown animate__fast animate__animated    sm:border-none";
   const title=document.createElement("h2")
-  title.className='mb-2 text-white sm:hidden'
-  title.textContent='ساخت لیست جدید'
+  title.className='mb-2 text-white '
+  title.textContent='افزودن دسته جدید'
   div.append(title)
   const addListInput = document.createElement("input");
   addListInput.className =
     "w-3/4 p-2 outline-none placeholder:text-gray-600 bg-white text-black border-slate-400 focus:border-slate-800 duration-150 border rounded-md placeholder:text-sm";
-  addListInput.placeholder = "نام دسته ی جدید...";
+  addListInput.placeholder = "نام دسته جدید";
   addListInput.id = "addListInput";
   div.append(addListInput);
 
