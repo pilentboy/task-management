@@ -3,6 +3,7 @@ import {
   renderCloseBTN,
   renderSubmitBTN,
 } from "../components/buttons";
+import erroAlert from "../components/errorAlert";
 import checkUserGroups from "../utils/checkUserGroups";
 import modalContainer from "./modalContainer";
 
@@ -55,6 +56,7 @@ const addNewGroups = () => {
       addListInput.value = "";
     } else {
       addListInput.classList.add("border-red-500", "border-2");
+      erroAlert("نام یک دسته نمی تواند خالی باشد!")
     }
   });
   if (window.innerWidth < 640) {

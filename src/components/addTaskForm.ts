@@ -6,6 +6,7 @@ import {
 import handleAddTask from "../utils/handleAddTask";
 import addNewGroups from "../modals/addNewGroups";
 import renderGroupSelect from "./groupSelect";
+import erroAlert from "./errorAlert";
 
 // create add task form
 const renderAddTaskForm = () => {
@@ -107,6 +108,7 @@ const renderAddTaskForm = () => {
     } else {
       taskInput.classList.remove("border-slate-400");
       taskInput.classList.add("border-2", "border-red-600");
+      erroAlert("عنوان هدف نمی تواند خالی باشد!");
     }
   });
   form.append(div);
