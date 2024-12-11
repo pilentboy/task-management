@@ -1,7 +1,7 @@
 import handleChangeTaskStatus from "../utils/handleTaskStatus";
 import handleDeleteTask from "../utils/handleDeleteTask";
 import renderGroupSelect from "./groupSelect";
-import renderTasksDisplayOrder from "./filterTasksSelect";
+import renderTasksDisplayOrder from "./tasksDisplayOrderSelect";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
