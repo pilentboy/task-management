@@ -37,7 +37,7 @@ const renderTaskList = (groupTitle: string) => {
 
   const ul = document.createElement("ul");
   ul.id = "taskList";
-  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full overflow-y-auto";
+  ul.className = "flex flex-col gap-2 mt-2 p-2  h-full overflow-y-auto";
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
 
@@ -57,10 +57,14 @@ const renderTaskList = (groupTitle: string) => {
         const taskSettingBTN = document.createElement("button");
         taskSettingBTN.type = "button";
         taskSettingBTN.className = "relative overflow-visible task-setting";
+        const icon = document.createElement("img");
+        icon.src = "/task-management/svg/dot-menu-more-svgrepo-com.svg";
+        icon.className = "w-4";
+        taskSettingBTN.append(icon);
 
         const taskSettingBox = document.createElement("div");
         taskSettingBox.className =
-          "w-10 h-10 -top-2 -left-10 rounded-md hidden items-center justify-center bg-black sm:bg-gray-900 absolute  sm:-top-2 sm:left-8 animate tast-setting-box z-10 animate__jackInTheBox animate__animated";
+          "w-10 h-10 -top-2 -left-10 rounded-md hidden items-center justify-center bg-black sm:bg-gray-900 absolute  sm:-top-2 sm:-left-10 animate tast-setting-box z-10 animate__jackInTheBox animate__animated";
         const deleteBTN = document.createElement("img");
         deleteBTN.className = "w-5";
         deleteBTN.src = "/task-management/svg/garbage-trash-svgrepo-com.svg";
@@ -71,10 +75,7 @@ const renderTaskList = (groupTitle: string) => {
         taskSettingBox.append(deleteBTN);
 
         taskSettingBTN.append(taskSettingBox);
-        const icon = document.createElement("img");
-        icon.src = "/task-management/svg/dot-menu-more-svgrepo-com.svg";
-        icon.className = "w-4";
-        taskSettingBTN.append(icon);
+
         right.append(taskSettingBTN);
         //  end task setting btn
 
@@ -140,7 +141,7 @@ const renderTaskList = (groupTitle: string) => {
         // date box
         const dateBox = document.createElement("div");
         dateBox.className =
-          "absolute -top-3 left-0 hidden border border-white sm:border-none w-32 h-12 rounded-md  flex-col items-center  justify-around date-box bg-slate-900 p-1 animate__fadeIn animate__animated sm:-left-36";
+          "absolute -top-3 left-0 hidden border border-white sm:border-none w-32 h-12 rounded-md  flex-col items-center  justify-around date-box bg-slate-900 p-1 animate__fadeIn animate__animated sm:-top-4 sm:left-12 ";
         for (let i = 0; i < 2; i++) {
           const date = document.createElement("span");
           date.className = "text-white text-[12px]";

@@ -102,6 +102,3 @@ h2 {
 .task-date-btn:focus .date-box {
   display: flex !important;
 }
-.task-date-btn:focus .date-box {
-  display: flex !important;
-}
