@@ -6,7 +6,7 @@ const taskManagerContainer = () => {
   const container = document.createElement("div");
   container.id = "taskManagerContainer";
   container.className =
-    "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated";
+    "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated ";
 
   //  group list
   const groupListContainer = document.createElement("div");
@@ -20,11 +20,10 @@ const taskManagerContainer = () => {
 const renderGroups = () => {
   const taskOptionsContainer = document.createElement("div");
   taskOptionsContainer.id = "taskOptionsContainer";
-  taskOptionsContainer.className =
-    "w-full flex items-center gap-2 overflow-x-auto px-2";
+  taskOptionsContainer.className = "w-full flex items-center gap-2   px-2";
 
   taskOptionsContainer.append(
-    renderGroupSelect("w-[100px] h-1/2","changeTaskRenderedList", (e: any) => {
+    renderGroupSelect("w-[100px] h-1/2", "changeTaskRenderedList", (e: any) => {
       document.querySelector("#taskList")?.remove();
       renderTaskList(e.target.value);
     })
@@ -38,7 +37,7 @@ const renderTaskList = (groupTitle: string) => {
 
   const ul = document.createElement("ul");
   ul.id = "taskList";
-  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full overflow-y-auto ";
+  ul.className = "flex flex-col gap-4 mt-2 p-2  h-full overflow-y-auto";
   const groupData = localStorage.getItem("groups");
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
 
@@ -46,8 +45,8 @@ const renderTaskList = (groupTitle: string) => {
     if (Object.keys(list)[0] === groupTitle) {
       const selectedList = list[groupTitle];
       selectedList.forEach((task: any, index: number) => {
-        const li = document.createElement("div");
-        li.className = `flex items-center justify-between w-full rounded-md p-1 ${
+        const li = document.createElement("li");
+        li.className = `flex items-center justify-between w-full  rounded-md p-1 ${
           index % 2 === 0 ? "bg-gray-900" : "bg-transparent"
         }`;
         // task status
@@ -131,7 +130,7 @@ const renderTaskList = (groupTitle: string) => {
         // left options
         const taskDateBTN = document.createElement("button");
         taskDateBTN.type = "button";
-        taskDateBTN.className = "w-8 h-8 relative task-date-btn";
+        taskDateBTN.className = "w-8 h-8  relative task-date-btn";
         const taskDateBTNIcon = document.createElement("img");
         taskDateBTNIcon.className = "w-fit h-fit";
         taskDateBTNIcon.src =
@@ -141,7 +140,7 @@ const renderTaskList = (groupTitle: string) => {
         // date box
         const dateBox = document.createElement("div");
         dateBox.className =
-          "absolute left-10 -top-3 border border-white sm:border-none w-32 h-12 rounded-md hidden flex-col items-center justify-around date-box bg-slate-900 p-1 animate__fadeIn animate__animated sm:-left-36";
+          "absolute -top-3 left-0 hidden border border-white sm:border-none w-32 h-12 rounded-md  flex-col items-center  justify-around date-box bg-slate-900 p-1 animate__fadeIn animate__animated sm:-left-36";
         for (let i = 0; i < 2; i++) {
           const date = document.createElement("span");
           date.className = "text-white text-[12px]";
