@@ -27,7 +27,8 @@ const renderGroupBox = () => {
         groupManager?.classList.remove("translate-y-[100%]");
       }, 200);
     }
-    renderTaskList("وظایفم");
+    const groupFilter = localStorage.getItem("group_filter");
+    renderTaskList(groupFilter ? groupFilter : "وظایفم");
   });
   return groupBox;
 };

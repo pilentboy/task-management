@@ -1,6 +1,7 @@
 import handleChangeTaskStatus from "../utils/handleTaskStatus";
 import handleDeleteTask from "../utils/handleDeleteTask";
 import renderGroupSelect from "./groupSelect";
+import renderTasksDisplayOrder from "./filterTasksSelect";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
@@ -8,24 +9,28 @@ const taskManagerContainer = () => {
   container.className =
     "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated ";
 
-  //  group list
-  const groupListContainer = document.createElement("div");
-  groupListContainer.className =
-    "w-full border-t border-slate-800 h-18 flex items-center py-1";
-  container.append(groupListContainer);
-  groupListContainer.append(renderGroups());
+  container.append(renderTaskOptions());
   return container;
 };
 
-const renderGroups = () => {
+const renderTaskOptions = () => {
   const taskOptionsContainer = document.createElement("div");
   taskOptionsContainer.id = "taskOptionsContainer";
-  taskOptionsContainer.className = "w-full flex items-center gap-2   px-2";
+  taskOptionsContainer.className =
+    "w-full border-t border-slate-800 h-18 flex items-center gap-2 px-2 py-1";
 
   taskOptionsContainer.append(
-    renderGroupSelect("w-[100px] h-1/2", "changeTaskRenderedList", (e: any) => {
+    renderGroupSelect("w-[100px] h-1/2", "taskRenderedGroup", (e: any) => {
       document.querySelector("#taskList")?.remove();
       renderTaskList(e.target.value);
+    })
+  );
+
+  taskOptionsContainer.append(
+    renderTasksDisplayOrder(() => {
+      const groupFilter = localStorage.getItem("group_filter");
+      document.querySelector("#taskList")?.remove();
+      renderTaskList(groupFilter ? groupFilter : "وظایفم");
     })
   );
 
@@ -33,6 +38,8 @@ const renderGroups = () => {
 };
 
 const renderTaskList = (groupTitle: string) => {
+  const taskFilter = renderTasksDisplayOrder(null);
+
   const groupContainer = document.querySelector("#taskManagerContainer");
 
   const ul = document.createElement("ul");
@@ -43,7 +50,11 @@ const renderTaskList = (groupTitle: string) => {
 
   groupDataObj.forEach((list: any) => {
     if (Object.keys(list)[0] === groupTitle) {
-      const selectedList = list[groupTitle];
+      const selectedList =
+        taskFilter.value === "قدیم"
+          ? list[groupTitle]
+          : list[groupTitle].reverse();
+      console.log(selectedList);
       selectedList.forEach((task: any, index: number) => {
         const li = document.createElement("li");
         li.className = `flex items-center justify-between w-full  rounded-md p-1 ${

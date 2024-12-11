@@ -14,7 +14,14 @@ const renderGroupSelect = (
     });
   }
 
+  tasksListSelect.addEventListener("change", (e: any) => {
+    localStorage.setItem("group_filter", e.target.value);
+  });
+
+ 
   const taskListNames = localStorage.getItem("groups") || null;
+  const groupFilter = localStorage.getItem("group_filter");
+
   if (taskListNames) {
     const taskList = JSON.parse(taskListNames);
     let taskNames: Array<string> = [];
@@ -23,6 +30,7 @@ const renderGroupSelect = (
     });
     taskNames.forEach((currentListName) => {
       const option = document.createElement("option");
+      if (currentListName === groupFilter) option.selected = true;
       option.value = currentListName;
       option.textContent = currentListName;
       option.className = "";

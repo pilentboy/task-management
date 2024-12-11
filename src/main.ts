@@ -16,6 +16,10 @@ window.addEventListener("load", () => {
     if (localStorage.getItem("username")) {
       if (!localStorage.getItem("groups"))
         localStorage.setItem("groups", JSON.stringify([{ وظایفم: [] }]));
+      if (!localStorage.getItem("order_filter"))
+        localStorage.setItem("order_filter", "جدید");
+      if (!localStorage.getItem("group_filter"))
+        localStorage.setItem("group_filter", "وظایفم");
       renderAppBoxes();
     } else {
       renderRegisterPage();

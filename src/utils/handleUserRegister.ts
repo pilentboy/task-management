@@ -14,6 +14,8 @@ const handleUserRegister = (e: any) => {
     );
     localStorage.setItem("username", registerInput.value);
     localStorage.setItem("groups", JSON.stringify([{ وظایفم: [] }]));
+    localStorage.setItem("order_filter", "جدید");
+    localStorage.setItem("group_filter", "وظایفم");
     welcomingContainer?.classList.add("animation-remove");
     setTimeout(() => {
       welcomingContainer?.remove();
