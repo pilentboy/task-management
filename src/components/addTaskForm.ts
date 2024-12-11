@@ -4,7 +4,7 @@ import {
   renderSubmitBTN,
 } from "../components/buttons";
 import handleAddTask from "../utils/handleAddTask";
-import addNewGroups from "../modals/addNewGroups";
+import addNewGroups from "./addNewGroups";
 import renderGroupSelect from "./groupSelect";
 import erroAlert from "./errorAlert";
 
