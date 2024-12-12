@@ -21,14 +21,14 @@ const renderStars = (): void => {
   const tasksObj = tasks ? JSON.parse(tasks) : null;
   let starsCount: number = 0;
 
-  tasksObj.forEach((tasks: any) => {
+  tasksObj?.forEach((tasks: any) => {
     // check taskInfo type later------------
     const tasksInfo: any = Object.values(tasks)[0];
-    tasksInfo.forEach((task: any) => {
+    tasksInfo?.forEach((task: any) => {
       task.status ? starsCount++ : null;
     });
   });
-  console.log(starsCount)
+
   for (let i = 0; i < starsCount; i++) {
     console.log("x")
     const star = document.createElement("span");
