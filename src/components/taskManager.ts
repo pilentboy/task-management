@@ -2,6 +2,8 @@ import handleChangeTaskStatus from "../utils/handleTaskStatus";
 import handleDeleteTask from "../utils/handleDeleteTask";
 import renderGroupSelect from "./groupSelect";
 import renderTasksDisplayOrder from "./tasksDisplayOrderSelect";
+import renderStatusDisplaySelect from "./taskPresentationStatusSelect";
+import renderTaskPresentationStatusSelect from "./taskPresentationStatusSelect";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
@@ -34,18 +36,30 @@ const renderTaskOptions = () => {
     })
   );
 
+  taskOptionsContainer.append(
+    renderStatusDisplaySelect(() => {
+      const groupFilter = localStorage.getItem("group_filter");
+      document.querySelector("#taskList")?.remove();
+      renderTaskList(groupFilter ? groupFilter : "وظایفم");
+    })
+  );
+
   return taskOptionsContainer;
 };
 
 const renderTaskList = (groupTitle: string) => {
   const taskFilter = renderTasksDisplayOrder(null);
+  const taskStatusPresentation = localStorage.getItem(
+    "task_status_presentation_filter"
+  );
+  console.log(taskStatusPresentation);
 
   const groupContainer = document.querySelector("#taskManagerContainer");
-
   const ul = document.createElement("ul");
   ul.id = "taskList";
   ul.className = "flex flex-col gap-2 mt-2 p-2  h-full overflow-y-auto";
   const groupData = localStorage.getItem("groups");
+
   const groupDataObj = groupData ? JSON.parse(groupData) : null;
 
   groupDataObj.forEach((list: any) => {
@@ -54,8 +68,18 @@ const renderTaskList = (groupTitle: string) => {
         taskFilter.value === "قدیم"
           ? list[groupTitle]
           : list[groupTitle].reverse();
-      console.log(selectedList);
-      selectedList.forEach((task: any, index: number) => {
+
+      const filteredTaskList = selectedList.filter((task: any) => {
+        if (taskStatusPresentation === "انجام شده" && task.status === true) {
+          return task;
+        } else if (taskStatusPresentation === "انجام نشده" && !task.status) {
+          return task;
+        } else if (taskStatusPresentation === "همه") {
+          return task;
+        }
+      });
+
+      filteredTaskList.forEach((task: any, index: number) => {
         const li = document.createElement("li");
         li.className = `flex items-center justify-between w-full  rounded-md p-1 ${
           index % 2 === 0 ? "bg-gray-900" : "bg-transparent"

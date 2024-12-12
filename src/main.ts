@@ -20,6 +20,8 @@ window.addEventListener("load", () => {
         localStorage.setItem("order_filter", "جدید");
       if (!localStorage.getItem("group_filter"))
         localStorage.setItem("group_filter", "وظایفم");
+      if (!localStorage.getItem("task_status_presentation_filter"))
+        localStorage.setItem("task_status_presentation_filter", "همه");
       renderAppBoxes();
     } else {
       renderRegisterPage();
