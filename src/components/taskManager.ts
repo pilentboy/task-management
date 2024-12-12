@@ -176,7 +176,7 @@ const renderTaskList = (groupTitle: string) => {
         // date box
         const dateBox = document.createElement("div");
         dateBox.className =
-          "absolute -top-3 left-0 hidden border border-white sm:border-none w-32 h-12 rounded-md  flex-col items-center  justify-around date-box bg-slate-900 p-1 animate__fadeIn animate__animated sm:-top-4 sm:left-12 ";
+          "absolute -top-3 left-0 hidden border border-white sm:border-none w-32 h-12 rounded-md  flex-col items-center  justify-around date-box bg-slate-900 p-1 animate__fadeIn animate__animated sm:-top-2 sm:left-12 ";
         for (let i = 0; i < 2; i++) {
           const date = document.createElement("span");
           date.className = "text-white text-[12px]";

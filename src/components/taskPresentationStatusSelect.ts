@@ -4,7 +4,7 @@ const renderTaskPresentationStatusSelect = (
   const taskPresentationStatusSelect = document.createElement("select");
   taskPresentationStatusSelect.name = "taskPresentationStatus";
   taskPresentationStatusSelect.id = "taskPresentationStatus";
-  taskPresentationStatusSelect.className = `select select-bordered max-w-xs`;
+  taskPresentationStatusSelect.className = `select select-bordered w-1/4 max-w-xs`;
 
   taskPresentationStatusSelect.addEventListener("change", (e: any) => {
     localStorage.setItem("task_status_presentation_filter", e.target.value);
