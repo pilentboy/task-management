@@ -2,7 +2,7 @@ const renderTasksDisplayOrder = (action: CallableFunction | null) => {
   const orderTaskListSelect = document.createElement("select");
   orderTaskListSelect.name = "taskFilter";
   orderTaskListSelect.id = "taskFilter";
-  orderTaskListSelect.className = `select select-bordered max-w-xs`;
+  orderTaskListSelect.className = `select select-bordered w-[100px] h-1/2 max-w-xs`;
 
 
   orderTaskListSelect.addEventListener("change", (e: any) => {

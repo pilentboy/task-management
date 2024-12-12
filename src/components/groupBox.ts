@@ -14,6 +14,7 @@ const renderGroupBox = () => {
   icon.src = "/task-management/svg/files-svgrepo-com.svg";
   groupBoxToggler.className =
     "duration-500 w-fit absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center";
+
   groupBoxToggler.append(icon);
   groupBox.append(groupBoxToggler);
 
@@ -25,8 +26,9 @@ const renderGroupBox = () => {
     if (window.innerWidth < 640) {
       setTimeout(() => {
         groupManager?.classList.remove("translate-y-[100%]");
-      }, 200);
+      }, 0);
     }
+
     const groupFilter = localStorage.getItem("group_filter");
     renderTaskList(groupFilter ? groupFilter : "وظایفم");
   });

@@ -8,7 +8,7 @@ const taskManagerContainer = () => {
   const container = document.createElement("div");
   container.id = "taskManagerContainer";
   container.className =
-    "w-[330px] sm:w-[400px] h-[500px] duration-500 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated ";
+    "w-[90%] sm:w-[400px] h-[500px] duration-300 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated ";
 
   container.append(renderTaskOptions());
   return container;
@@ -18,30 +18,87 @@ const renderTaskOptions = () => {
   const taskOptionsContainer = document.createElement("div");
   taskOptionsContainer.id = "taskOptionsContainer";
   taskOptionsContainer.className =
-    "w-full border-t border-slate-800 h-18 flex items-center gap-2 px-2 py-1";
+    "w-full border-t border-slate-800 h-18 flex justify-evenly items-center gap-2 px-2 py-1";
+  const btn = document.createElement("button");
+  btn.type = "button";
+  btn.title = "فیلتر";
+  const btnIcon = document.createElement("img");
+  btnIcon.src = "/task-management/svg/filter-svgrepo-com.svg";
+  btnIcon.className = "w-8";
+  btn.append(btnIcon);
+  taskOptionsContainer.append(btn);
 
-  taskOptionsContainer.append(
-    renderGroupSelect("w-[100px] h-1/2", "taskRenderedGroup", (e: any) => {
-      document.querySelector("#taskList")?.remove();
-      renderTaskList(e.target.value);
-    })
-  );
+  let filterBoxDisplay = false;
 
-  taskOptionsContainer.append(
-    renderTasksDisplayOrder(() => {
-      const groupFilter = localStorage.getItem("group_filter");
-      document.querySelector("#taskList")?.remove();
-      renderTaskList(groupFilter ? groupFilter : "وظایفم");
-    })
-  );
+  btn.addEventListener("click", () => {
+    if (!filterBoxDisplay) {
+      const filterBoxContainer = document.createElement("div");
+      filterBoxContainer.id = "filterBoxContainer";
+      filterBoxContainer.className =
+        "w-full h-full backdrop-blur-sm absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center z-[999]";
+      filterBoxContainer.addEventListener("click", (e: any) => {
+        e.target === filterBoxContainer ? filterBoxContainer.remove() : null;
+        filterBoxDisplay = false;
+      });
 
-  taskOptionsContainer.append(
-    renderStatusDisplaySelect(() => {
-      const groupFilter = localStorage.getItem("group_filter");
-      document.querySelector("#taskList")?.remove();
-      renderTaskList(groupFilter ? groupFilter : "وظایفم");
-    })
-  );
+      const filterBox = document.createElement("div");
+      filterBox.className =
+        "w-4/5 h-[200px] rounded-md bg-gray-800 flex items-center jusity-center p-2";
+      filterBoxContainer.append(filterBox);
+      const filterOptionsWrapper = document.createElement("ul");
+      filterOptionsWrapper.className =
+        "flex flex-col h-full w-full  justify-between";
+      for (let i = 0; i <= 2; i++) {
+        const li = document.createElement("li");
+        li.className = "flex items-center justify-between";
+        const span = document.createElement("span");
+        li.append(span);
+        span.className = "text-white text-sm";
+
+        if (i == 0) {
+          span.textContent = "از دسته:";
+          li.append(
+            renderGroupSelect(
+              "w-[100px] h-1/2",
+              "taskRenderedGroup",
+              (e: any) => {
+                document.querySelector("#taskList")?.remove();
+                renderTaskList(e.target.value);
+              }
+            )
+          );
+        } else if (i == 1) {
+          span.textContent = "ترتیب بر اساس: ";
+          li.append(
+            renderTasksDisplayOrder(() => {
+              const groupFilter = localStorage.getItem("group_filter");
+              document.querySelector("#taskList")?.remove();
+              renderTaskList(groupFilter ? groupFilter : "وظایفم");
+            })
+          );
+        } else if (i == 2) {
+          span.textContent = "بر اساس وضعیت:";
+          li.append(
+            renderStatusDisplaySelect(() => {
+              const groupFilter = localStorage.getItem("group_filter");
+              document.querySelector("#taskList")?.remove();
+              renderTaskList(groupFilter ? groupFilter : "وظایفم");
+            })
+          );
+        }
+
+        filterOptionsWrapper.append(li);
+      }
+      filterBox.append(filterOptionsWrapper);
+      filterBoxDisplay = true;
+      document
+        .querySelector("#taskManagerContainer")
+        ?.append(filterBoxContainer);
+    } else {
+      document.querySelector("#filterBoxContainer")?.remove();
+      filterBoxDisplay = false;
+    }
+  });
 
   return taskOptionsContainer;
 };

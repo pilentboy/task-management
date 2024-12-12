@@ -7,7 +7,7 @@ import {
 const profile = () => {
   const container = document.createElement("div");
   container.className =
-    "w-3/4 h-[250px] sm:w-[400px]  flex justify-center bg-black  border-b border-t  border-slate-900 modal-gr  animate__fadeIn animate__animated";
+    "w-3/4 h-[250px] sm:w-[400px]  flex justify-center bg-black  border-b border-t  border-slate-900 modal-gr";
 
   const form = document.createElement("form");
   form.id = "updateProfile";
