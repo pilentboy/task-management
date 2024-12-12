@@ -3,7 +3,6 @@ import handleDeleteTask from "../utils/handleDeleteTask";
 import renderGroupSelect from "./groupSelect";
 import renderTasksDisplayOrder from "./tasksDisplayOrderSelect";
 import renderStatusDisplaySelect from "./taskPresentationStatusSelect";
-import renderTaskPresentationStatusSelect from "./taskPresentationStatusSelect";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
