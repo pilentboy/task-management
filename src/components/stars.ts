@@ -2,10 +2,8 @@ const container = document.querySelector<HTMLDivElement>(".container");
 
 // render stars
 const renderStars = (): void => {
-  if (document.querySelector("#starsContainer")) {
-    let currentDiv = document.querySelector("#starsContainer");
-    currentDiv?.remove();
-  }
+  let stars = document.querySelector("#starsContainer");
+  if (stars) stars.remove();
 
   const starsContainer = document.createElement("div");
   starsContainer.setAttribute("id", "starsContainer");
@@ -18,11 +16,24 @@ const renderStars = (): void => {
     "z-[500]",
     "px-10"
   );
-  const starsCount = 10;
-  for (let i = 0; i <= starsCount; i++) {
+
+  const tasks = localStorage.getItem("groups");
+  const tasksObj = tasks ? JSON.parse(tasks) : null;
+  let starsCount: number = 0;
+
+  tasksObj.forEach((tasks: any) => {
+    // check taskInfo type later------------
+    const tasksInfo: any = Object.values(tasks)[0];
+    tasksInfo.forEach((task: any) => {
+      task.status ? starsCount++ : null;
+    });
+  });
+  console.log(starsCount)
+  for (let i = 0; i < starsCount; i++) {
+    console.log("x")
     const star = document.createElement("span");
     star.classList.add("star", "absolute");
-    // i % 2 === 0 ? star.classList.add("animate-ping") : null;
+    i % 2 === 0 ? star.classList.add("animate-ping") : null;
     const x: number = Math.floor(Math.random() * window.innerWidth + 50);
     const y: number = Math.floor(Math.random() * window.innerHeight + 50);
     star.style.left = `${x}px`;

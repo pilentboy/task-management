@@ -34,7 +34,7 @@ window.addEventListener("load", () => {
 // change welcome message text
 window.addEventListener("resize", () => {
   setWelcomeMessage();
-  // renderStars();
+  renderStars();
 });
 
 // change welcome message dynamicly based on user's screen size
