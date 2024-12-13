@@ -94,7 +94,8 @@ const renderTaskOptions = () => {
   deleteGroupBTN.addEventListener("click", () => {
     const deleteGroupWrapper = document.createElement("div");
     deleteGroupWrapper.id = "deleteGroup";
-    deleteGroupWrapper.className = "flex flex-col justify-around w-full h-full";
+    deleteGroupWrapper.className =
+      "flex flex-col items-center justify-around w-full h-full";
 
     const selectedData = localStorage.getItem("group_filter");
 
@@ -109,26 +110,28 @@ const renderTaskOptions = () => {
     deleteGroupWrapper.append(title);
 
     const buttonContainer = document.createElement("div");
-    buttonContainer.className = "flex items-center w-full justify-evenly";
-    const dlBTN = document.createElement("button");
-    dlBTN.type = "button";
-    dlBTN.className = "btn btn-outline btn-error btn-sm";
-    dlBTN.textContent = "بله";
-    buttonContainer.append(dlBTN);
-    dlBTN.addEventListener("click", () => {
-      handleDeleteGroup("x");
-    });
+    buttonContainer.className = "flex items-center w-full justify-center gap-8";
 
     const cancelBTN = document.createElement("button");
     cancelBTN.type = "button";
-    cancelBTN.className = "btn btn-outline btn-info btn-sm";
+    cancelBTN.className = "rounded-md w-14 h-8 bg-gray-800 text-white";
     cancelBTN.textContent = "خیر";
     buttonContainer.append(cancelBTN);
     deleteGroupWrapper.append(buttonContainer);
     cancelBTN.addEventListener("click", () => {
       document.querySelector("#filterBoxContainer")?.remove();
     });
-    taskManagerModal(deleteGroupWrapper, "w-4/5 h-[150px]");
+
+    const dlBTN = document.createElement("button");
+    dlBTN.type = "button";
+    dlBTN.className = "rounded-md w-14 h-8 bg-gray-800 text-white hover:text-red-600 duration-300	";
+    dlBTN.textContent = "بله";
+    buttonContainer.append(dlBTN);
+    dlBTN.addEventListener("click", () => {
+      handleDeleteGroup();
+    });
+
+    taskManagerModal(deleteGroupWrapper, "w-4/5 h-[120px]");
   });
 
   taskOptionsContainer.append(deleteGroupBTN);

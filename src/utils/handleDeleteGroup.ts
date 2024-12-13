@@ -1,6 +1,6 @@
 import { renderTaskList } from "../components/taskManager";
 
-const handleDeleteGroup = (name: string): void => {
+const handleDeleteGroup = (): void => {
   const groupData = localStorage.getItem("groups");
 
   const deletedGroup = localStorage.getItem("group_filter");
@@ -22,7 +22,6 @@ const handleDeleteGroup = (name: string): void => {
     }
   }
 
-  console.log(`deleting ${name}`);
 };
 
 export default handleDeleteGroup;
