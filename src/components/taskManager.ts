@@ -4,6 +4,7 @@ import renderGroupSelect from "./groupSelect";
 import renderTasksDisplayOrder from "./tasksDisplayOrderSelect";
 import renderStatusDisplaySelect from "./taskPresentationStatusSelect";
 import taskManagerModal from "../modals/taskManagerModal";
+import handleDeleteGroup from "../utils/handleDeleteGroup";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
@@ -56,7 +57,7 @@ const renderTaskOptions = () => {
           )
         );
       } else if (i == 1) {
-        span.textContent = "ترتیب بر اساس: ";
+        span.textContent = "ترتیب زمانی:";
         li.append(
           renderTasksDisplayOrder(() => {
             const groupFilter = localStorage.getItem("group_filter");
@@ -115,7 +116,7 @@ const renderTaskOptions = () => {
     dlBTN.textContent = "بله";
     buttonContainer.append(dlBTN);
     dlBTN.addEventListener("click", () => {
-      alert("not available");
+      handleDeleteGroup("x");
     });
 
     const cancelBTN = document.createElement("button");
@@ -139,7 +140,6 @@ const renderTaskList = (groupTitle: string) => {
   const taskStatusPresentation = localStorage.getItem(
     "task_status_presentation_filter"
   );
-  console.log(taskStatusPresentation);
 
   const groupContainer = document.querySelector("#taskManagerContainer");
   const ul = document.createElement("ul");
