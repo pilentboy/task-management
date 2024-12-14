@@ -4,7 +4,6 @@ import renderGroupSelect from "./groupSelect";
 import renderTasksDisplayOrder from "./tasksDisplayOrderSelect";
 import renderStatusDisplaySelect from "./taskPresentationStatusSelect";
 import taskManagerModal from "../modals/taskManagerModal";
-import handleDeleteGroup from "../utils/handleDeleteGroup";
 import lineIcon from "./lineIcon";
 import { erroAlert } from "./alets";
 import deleteGroupBox from "./deleteGroupBox";
