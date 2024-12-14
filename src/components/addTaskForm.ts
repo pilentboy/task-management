@@ -6,7 +6,7 @@ import {
 import handleAddTask from "../utils/handleAddTask";
 import addNewGroups from "./addNewGroups";
 import renderGroupSelect from "./groupSelect";
-import erroAlert from "./errorAlert";
+import { erroAlert } from "./alets";
 
 // create add task form
 const renderAddTaskForm = () => {
@@ -16,7 +16,8 @@ const renderAddTaskForm = () => {
     "w-full h-[300px] bg-red-500 sm:h-fit animate__fadeIn animate__animated absolute duration-300  bottom-0 left-1/2 translate-x-[-50%] translate-y-[100%] border border-slate-800 rounded-lg rounded-b-none sm:border-none  sm:left-0  sm:translate-y-0 sm:translate-x-0 sm:w-full  sm:block sm:relative";
   const div = document.createElement("div");
   div.id = "formContainer";
-  div.className = "flex flex-col gap-2 add-task-bg h-full py-4 px-2 sm:px-0 sm:py-0 sm:gap-2 ";
+  div.className =
+    "flex flex-col gap-2 add-task-bg h-full py-4 px-2 sm:px-0 sm:py-0 sm:gap-2 ";
   form.append(div);
   const title = document.createElement("label");
   title.setAttribute("for", "taskInput");

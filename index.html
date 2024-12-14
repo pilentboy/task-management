@@ -2,18 +2,19 @@
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+
     <link rel="icon" type="svg" href="./src/assets/logo/logoipsum-293.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>مدیریت برنامه</title>
   </head>
-  <body class="font-vazirMedium">
+  <body class="font-vazirMedium" style="display: none;">
     <main>
       <div
         class="container items-end py-4 flex sm:items-center justify-around space-x-2"
       >
         <div
-          class="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center z-[1000] loading-container"
+          class="fixed top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] hidden items-center justify-center z-[1000] loading-container"
           id="loading"
         >
           <div
@@ -38,7 +39,6 @@
         </div>
       </div>
     </main>
-    <script type="module" src="/src/main.ts"></script>
-
+    <script type="module" src="/src/main.ts" defer></script>
   </body>
 </html>

@@ -9,20 +9,24 @@ import { OrbitControls } from "three-stdlib";
 
 const loading = document.querySelector<HTMLDivElement>("#loading");
 
-window.addEventListener("load", () => {
-  renderStars();
-  setTimeout(() => {
-    if (!localStorage.getItem("groups"))
-      localStorage.setItem("groups", JSON.stringify([{ وظایفم: [] }]));
-    if (!localStorage.getItem("order_filter"))
-      localStorage.setItem("order_filter", "جدید");
-    if (!localStorage.getItem("group_filter"))
-      localStorage.setItem("group_filter", "پروژه");
-    if (!localStorage.getItem("task_status_presentation_filter"))
-      localStorage.setItem("task_status_presentation_filter", "همه");
-    renderAppBoxes();
-    loading?.remove();
-  }, 100);
+import("./assets/styles/index.css").then(() => {
+  document.body.style.display = "block";
+  loading?.classList.remove("hidden");
+  window.addEventListener("load", () => {
+    renderStars();
+    setTimeout(() => {
+      if (!localStorage.getItem("groups"))
+        localStorage.setItem("groups", JSON.stringify([{ وظایفم: [] }]));
+      if (!localStorage.getItem("order_filter"))
+        localStorage.setItem("order_filter", "جدید");
+      if (!localStorage.getItem("group_filter"))
+        localStorage.setItem("group_filter", "پروژه");
+      if (!localStorage.getItem("task_status_presentation_filter"))
+        localStorage.setItem("task_status_presentation_filter", "همه");
+      renderAppBoxes();
+      loading?.remove();
+    }, 500);
+  });
 });
 
 window.addEventListener("resize", () => {

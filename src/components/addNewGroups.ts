@@ -3,7 +3,7 @@ import {
   renderCloseBTN,
   renderSubmitBTN,
 } from "./buttons";
-import erroAlert from "./errorAlert";
+import {erroAlert} from "./alets";
 import checkUserGroups from "../utils/checkUserGroups";
 import modalContainer from "../modals/modalContainer";
 
