@@ -140,6 +140,7 @@ const renderTaskOptions = () => {
       buttonContainer.append(dlBTN);
       dlBTN.addEventListener("click", () => {
         handleDeleteGroup();
+        
       });
 
       taskManagerModal(deleteGroupWrapper, "w-4/5 h-[120px]");
