@@ -6,6 +6,7 @@ import renderStatusDisplaySelect from "./taskPresentationStatusSelect";
 import taskManagerModal from "../modals/taskManagerModal";
 import handleDeleteGroup from "../utils/handleDeleteGroup";
 import lineIcon from "./lineIcon";
+import { erroAlert } from "./alets";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
@@ -92,54 +93,59 @@ const renderTaskOptions = () => {
   // delete group button
   const deleteGroupBTN = document.createElement("button");
   deleteGroupBTN.type = "button";
-  deleteGroupBTN.title = "حذف این دسته";
+  deleteGroupBTN.title = "حذف این گروه";
   const delIcon = document.createElement("img");
   delIcon.src = "/task-management/svg/delete-clipboard-svgrepo-com.svg";
   delIcon.className = "w-8";
   deleteGroupBTN.append(delIcon);
 
   deleteGroupBTN.addEventListener("click", () => {
-    const deleteGroupWrapper = document.createElement("div");
-    deleteGroupWrapper.id = "deleteGroup";
-    deleteGroupWrapper.className =
-      "flex flex-col items-center justify-around w-full h-full";
-
     const selectedData = localStorage.getItem("group_filter");
 
-    const title = document.createElement("span");
-    title.className = "text-white text-sm";
-    title.innerHTML = `
-     آیا از
-     <span class='text-red-600'>حذف</span> دسته <span class='text-sm bold border-b border-white'> ${
-       selectedData ? selectedData : null
-     }</span> مطمئن هستید؟
-    `;
-    deleteGroupWrapper.append(title);
+    if (selectedData !== "اهدافم") {
+      const deleteGroupWrapper = document.createElement("div");
+      deleteGroupWrapper.id = "deleteGroup";
+      deleteGroupWrapper.className =
+        "flex flex-col items-center justify-around w-full h-full";
 
-    const buttonContainer = document.createElement("div");
-    buttonContainer.className = "flex items-center w-full justify-center gap-8";
+      const title = document.createElement("span");
+      title.className = "text-white text-sm";
+      title.innerHTML = `
+       آیا از
+       <span class='text-red-600'>حذف</span> گروه <span class='text-sm bold border-b border-white'> ${
+         selectedData ? selectedData : null
+       }</span> مطمئن هستید؟
+      `;
+      deleteGroupWrapper.append(title);
 
-    const cancelBTN = document.createElement("button");
-    cancelBTN.type = "button";
-    cancelBTN.className = "rounded-md w-14 h-8 bg-gray-800 text-white";
-    cancelBTN.textContent = "خیر";
-    buttonContainer.append(cancelBTN);
-    deleteGroupWrapper.append(buttonContainer);
-    cancelBTN.addEventListener("click", () => {
-      document.querySelector("#filterBoxContainer")?.remove();
-    });
+      const buttonContainer = document.createElement("div");
+      buttonContainer.className =
+        "flex items-center w-full justify-center gap-8";
 
-    const dlBTN = document.createElement("button");
-    dlBTN.type = "button";
-    dlBTN.className =
-      "rounded-md w-14 h-8 bg-gray-800 text-white hover:text-red-600 duration-300	";
-    dlBTN.textContent = "بله";
-    buttonContainer.append(dlBTN);
-    dlBTN.addEventListener("click", () => {
-      handleDeleteGroup();
-    });
+      const cancelBTN = document.createElement("button");
+      cancelBTN.type = "button";
+      cancelBTN.className = "rounded-md w-14 h-8 bg-gray-800 text-white";
+      cancelBTN.textContent = "خیر";
+      buttonContainer.append(cancelBTN);
+      deleteGroupWrapper.append(buttonContainer);
+      cancelBTN.addEventListener("click", () => {
+        document.querySelector("#filterBoxContainer")?.remove();
+      });
 
-    taskManagerModal(deleteGroupWrapper, "w-4/5 h-[120px]");
+      const dlBTN = document.createElement("button");
+      dlBTN.type = "button";
+      dlBTN.className =
+        "rounded-md w-14 h-8 bg-gray-800 text-white hover:text-red-600 duration-300	";
+      dlBTN.textContent = "بله";
+      buttonContainer.append(dlBTN);
+      dlBTN.addEventListener("click", () => {
+        handleDeleteGroup();
+      });
+
+      taskManagerModal(deleteGroupWrapper, "w-4/5 h-[120px]");
+    } else {
+      erroAlert("امکان حذف این گروه وجود ندارد!")
+    }
   });
 
   taskOptionsButtonsWrapper.append(deleteGroupBTN);

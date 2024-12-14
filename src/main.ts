@@ -16,11 +16,11 @@ import("./assets/styles/index.css").then(() => {
     renderStars();
     setTimeout(() => {
       if (!localStorage.getItem("groups"))
-        localStorage.setItem("groups", JSON.stringify([{ وظایفم: [] }]));
+        localStorage.setItem("groups", JSON.stringify([{ اهدافم: [] }]));
       if (!localStorage.getItem("order_filter"))
         localStorage.setItem("order_filter", "جدید");
       if (!localStorage.getItem("group_filter"))
-        localStorage.setItem("group_filter", "پروژه");
+        localStorage.setItem("group_filter", "اهدافم");
       if (!localStorage.getItem("task_status_presentation_filter"))
         localStorage.setItem("task_status_presentation_filter", "همه");
       renderAppBoxes();

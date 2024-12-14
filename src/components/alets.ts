@@ -1,7 +1,7 @@
 const erroAlert = (title: string) => {
   const errorAlert = document.createElement("div");
   errorAlert.className =
-    "alert alert-error animate__fadeIn z-[1000] animate__animated fixed top-8 left-1/2 translate-x-[-50%] w-fit h-10 items-center text-center py-2";
+    "alert alert-error animate__fadeIn z-[1000] animate__animated fixed top-8 left-1/2 translate-x-[-50%] w-[280px] h-10 flex items-center justify-around text-center py-2";
   errorAlert.innerHTML = `
    <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -23,4 +23,19 @@ const erroAlert = (title: string) => {
   }, 2500);
 };
 
-export { erroAlert };
+const successAlert = (title: string) => {
+  const errorAlert = document.createElement("div");
+  errorAlert.className =
+    "alert alert-success animate__fadeIn z-[1000] animate__animated fixed top-8 left-1/2 translate-x-[-50%] w-[280px] h-10 flex items-center justify-around text-center py-2";
+  errorAlert.innerHTML = `
+
+    <span class='text-sm block'>${title}</span>
+  `;
+
+  document.querySelector(".container")?.append(errorAlert);
+  setTimeout(() => {
+    errorAlert.classList.add("animate__fadeOut");
+  }, 2500);
+};
+
+export { erroAlert, successAlert };
