@@ -2,7 +2,7 @@ const renderGroupSelect = (
   size: string,
   id: string,
   action: CallableFunction | null,
-  displayLastSelected: boolean
+  displayLastSelected: boolean 
 ) => {
   const tasksListSelect = document.createElement("select");
   tasksListSelect.name = id;
