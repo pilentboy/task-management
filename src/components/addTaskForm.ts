@@ -106,7 +106,7 @@ const renderAddTaskForm = () => {
       taskInput.classList.remove("border-2", "border-red-600");
       taskInput.classList.add("border-slate-400");
       taskInput.value = "";
-      successAlert("با موفقیت افزوده شد!")
+      successAlert("با موفقیت افزوده شد!");
     } else {
       taskInput.classList.remove("border-slate-400");
       taskInput.classList.add("border-2", "border-red-600");

@@ -4,6 +4,7 @@ const taskManagerModal = (content: any, contentboxSize: string | null) => {
   filterBoxContainer.id = "filterBoxContainer";
   filterBoxContainer.className =
     "w-full h-full backdrop-blur-sm absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center z-[999]";
+    
   filterBoxContainer.addEventListener("click", (e: any) => {
     e.target === filterBoxContainer ? filterBoxContainer.remove() : null;
   });
