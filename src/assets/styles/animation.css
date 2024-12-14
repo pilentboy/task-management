@@ -105,6 +105,7 @@
   transform: translateX(100%);
   z-index: -1;
   transition: 150ms;
+  @apply border-slate-800
 }
 .animation-btn:hover:after,
 .animation-btn:active:after {

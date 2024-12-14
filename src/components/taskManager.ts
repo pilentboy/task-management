@@ -5,12 +5,13 @@ import renderTasksDisplayOrder from "./tasksDisplayOrderSelect";
 import renderStatusDisplaySelect from "./taskPresentationStatusSelect";
 import taskManagerModal from "../modals/taskManagerModal";
 import handleDeleteGroup from "../utils/handleDeleteGroup";
+import lineIcon from "./lineIcon";
 
 const taskManagerContainer = () => {
   const container = document.createElement("div");
   container.id = "taskManagerContainer";
   container.className =
-    "w-[90%] sm:w-[400px] h-[500px] duration-300 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border-2 border-slate-800 rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated ";
+    "w-[90%] sm:w-[400px] h-[500px] duration-300 absolute bottom-0 left-[50%] translate-y-[100%] translate-x-[-50%]  sm:relative sm:left-0 sm:translate-y-0 sm:translate-x-0  border border-slate-800 rounded-b-none rounded-lg flex flex-col-reverse  add-task-bg animate__fadeIn animate__fast	animate__animated ";
 
   container.append(renderTaskOptions());
   return container;
@@ -20,7 +21,20 @@ const renderTaskOptions = () => {
   const taskOptionsContainer = document.createElement("div");
   taskOptionsContainer.id = "taskOptionsContainer";
   taskOptionsContainer.className =
-    "w-full border-t border-slate-800 h-18 flex justify-evenly items-center gap-2 px-2 py-1";
+    "w-full border-t border-slate-800 h-24 sm:h-20 flex justify-between items-center  px-2";
+
+  taskOptionsContainer.append(
+    renderGroupSelect("w-[90px]", "taskRenderedGroup", (e: any) => {
+      document.querySelector("#taskList")?.remove();
+      renderTaskList(e.target.value);
+    })
+  );
+
+  const taskOptionsButtonsWrapper = document.createElement("div");
+  taskOptionsButtonsWrapper.className =
+    "flex items-center justify-center gap-4";
+
+  taskOptionsButtonsWrapper.append(lineIcon());
 
   // filter button
   const filterBTN = document.createElement("button");
@@ -30,14 +44,14 @@ const renderTaskOptions = () => {
   filterIcon.src = "/task-management/svg/filter-svgrepo-com.svg";
   filterIcon.className = "w-8";
   filterBTN.append(filterIcon);
-  taskOptionsContainer.append(filterBTN);
+  taskOptionsButtonsWrapper.append(filterBTN);
 
   // task filter box
   filterBTN.addEventListener("click", () => {
     const filterOptionsWrapper = document.createElement("ul");
     filterOptionsWrapper.className =
       "flex flex-col h-full w-full  justify-between";
-    for (let i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 1; i++) {
       const li = document.createElement("li");
       li.className = "flex items-center justify-between";
       const span = document.createElement("span");
@@ -45,18 +59,6 @@ const renderTaskOptions = () => {
       span.className = "text-white text-sm";
 
       if (i == 0) {
-        span.textContent = "از دسته:";
-        li.append(
-          renderGroupSelect(
-            "w-[100px] h-1/2",
-            "taskRenderedGroup",
-            (e: any) => {
-              document.querySelector("#taskList")?.remove();
-              renderTaskList(e.target.value);
-            }
-          )
-        );
-      } else if (i == 1) {
         span.textContent = "ترتیب زمانی:";
         li.append(
           renderTasksDisplayOrder(() => {
@@ -65,7 +67,7 @@ const renderTaskOptions = () => {
             renderTaskList(groupFilter ? groupFilter : "وظایفم");
           })
         );
-      } else if (i == 2) {
+      } else {
         span.textContent = "بر اساس وضعیت:";
         li.append(
           renderStatusDisplaySelect(() => {
@@ -79,7 +81,7 @@ const renderTaskOptions = () => {
       filterOptionsWrapper.append(li);
     }
 
-    taskManagerModal(filterOptionsWrapper, null);
+    taskManagerModal(filterOptionsWrapper, "w-4/5 h-[140px]");
   });
 
   // delete group button
@@ -124,7 +126,8 @@ const renderTaskOptions = () => {
 
     const dlBTN = document.createElement("button");
     dlBTN.type = "button";
-    dlBTN.className = "rounded-md w-14 h-8 bg-gray-800 text-white hover:text-red-600 duration-300	";
+    dlBTN.className =
+      "rounded-md w-14 h-8 bg-gray-800 text-white hover:text-red-600 duration-300	";
     dlBTN.textContent = "بله";
     buttonContainer.append(dlBTN);
     dlBTN.addEventListener("click", () => {
@@ -134,7 +137,8 @@ const renderTaskOptions = () => {
     taskManagerModal(deleteGroupWrapper, "w-4/5 h-[120px]");
   });
 
-  taskOptionsContainer.append(deleteGroupBTN);
+  taskOptionsButtonsWrapper.append(deleteGroupBTN);
+  taskOptionsContainer.append(taskOptionsButtonsWrapper);
   return taskOptionsContainer;
 };
 
