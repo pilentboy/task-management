@@ -14,7 +14,7 @@ const erroAlert = (title: string) => {
         stroke-width="2"
         d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
     </svg>
-    <span class='text-sm block'>${title}</span>
+    <span class='text-sm block font-medium'>${title}</span>
   `;
 
   document.querySelector(".container")?.append(errorAlert);
@@ -26,7 +26,7 @@ const erroAlert = (title: string) => {
 const successAlert = (title: string) => {
   const errorAlert = document.createElement("div");
   errorAlert.className =
-    "alert alert-success animate__fadeIn z-[1000] animate__animated fixed top-8 left-1/2 translate-x-[-50%] w-[220px] h-10 flex items-center justify-around text-center py-2";
+    "alert alert-success animate__fadeIn z-[1000] animate__animated fixed top-8 left-1/2 translate-x-[-50%] w-[200px] h-10 flex items-center justify-around text-center py-2";
   errorAlert.innerHTML = `
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -39,7 +39,7 @@ const successAlert = (title: string) => {
       stroke-width="2"
       d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
-    <span class='text-sm block'>${title}</span>
+    <span class='text-sm block font-medium'>${title}</span>
   `;
 
   document.querySelector(".container")?.append(errorAlert);

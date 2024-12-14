@@ -1,5 +1,6 @@
 import taskManagerModal from "../modals/taskManagerModal";
 import handleDeleteGroup from "../utils/handleDeleteGroup";
+import { successAlert } from "./alets";
 import renderGroupSelect from "./groupSelect";
 import { renderTaskList } from "./taskManager";
 
@@ -57,6 +58,7 @@ const deleteGroupBox = () => {
           true
         )
       );
+      successAlert("با موفقیت حذف شد!")
   });
   deleteGroupWrapper.append(buttonContainer);
 

@@ -49,10 +49,12 @@ const renderAddTaskForm = () => {
 
   const addListBTN = document.createElement("button");
   addListBTN.setAttribute("type", "button");
-  addListBTN.className = "py-1 px-3 border-none text-white text-lg";
+  addListBTN.className = "py-1 px-3 border-none text-white text-lg tooltip";
   addListBTN.textContent = "+";
   addListBTN.addEventListener("click", addNewGroups);
   selectContainer.append(addListBTN);
+
+
   div.append(selectContainer);
 
   window.addEventListener("resize", () => {
