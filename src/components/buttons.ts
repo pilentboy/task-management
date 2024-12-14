@@ -1,7 +1,10 @@
+import { sub } from "three/webgpu";
+
 // button container in forms
 const renderButtonContianer = (firstBTN: any, secondBTN: any) => {
   const btnDiv = document.createElement("div");
-  btnDiv.className = "w-full flex flex-row-reverse items-center justify-center gap-10 mt-4";
+  btnDiv.className =
+    "w-full flex flex-row-reverse items-center justify-center gap-10 mt-4";
   btnDiv.append(firstBTN);
   btnDiv.append(secondBTN);
   return btnDiv;
@@ -20,19 +23,15 @@ const renderCloseBTN = (action: any) => {
 };
 
 // submit btn
-const renderSubmitBTN = (
-  // <button class="btn btn-primary">Primary</button>
-  btnID: string,
-  title: string | null = "افزودن",
-  hoverStyle: boolean | null = true
-) => {
-  const submitTask = document.createElement("button");
-  submitTask.textContent = title;
-  submitTask.className = ` self-center w-20 h-9  py-1 text-white outline-none border border-white rounded-md duration-150 relative overflow-hidden
- ${hoverStyle ? "animation-btn" : null}`;
-  submitTask.setAttribute("id", btnID);
-
-  return submitTask;
+const renderSubmitBTN = (btnID: string) => {
+  const submitBTN = document.createElement("button");
+  submitBTN.className = "py-1 duration-150";
+  submitBTN.setAttribute("id", btnID);
+  const icon = document.createElement("img");
+  icon.src = "/task-management/svg/tick-square-svgrepo-com.svg";
+  icon.className = "w-10 h-10";
+  submitBTN.append(icon);
+  return submitBTN;
 };
 
 export { renderCloseBTN, renderButtonContianer, renderSubmitBTN };

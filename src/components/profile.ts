@@ -26,7 +26,7 @@ const profile = () => {
       renderCloseBTN(() => {
         document.querySelector("#modalContainer")?.remove();
       }),
-      renderSubmitBTN("updateProfile", "تایید", false)
+      renderSubmitBTN("updateProfile")
     )
   );
   form.addEventListener("submit", (e: any) => {

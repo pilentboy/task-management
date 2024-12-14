@@ -90,7 +90,7 @@ const renderAddTaskForm = () => {
         );
         addTaskBox?.classList.add("sm:w-64", "h-24");
       }),
-      renderSubmitBTN("submitTaskBTN", "افزودن", false)
+      renderSubmitBTN("submitTaskBTN")
     )
   );
 
