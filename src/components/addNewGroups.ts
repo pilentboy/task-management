@@ -16,7 +16,7 @@ const addNewGroups = () => {
   const div = document.createElement("div");
   form.append(div);
   div.className =
-    "absolute top-[10%] sm:top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-3/4 sm:h-full animate__flipInX animate__fast animate__animated    sm:border-none";
+    "absolute top-[30%] sm:top-0 left-0 flex flex-col gap-2 items-center justify-center modal-gr w-full h-3/4 sm:h-full animate__flipInX animate__fast animate__animated    sm:border-none";
   const title = document.createElement("h2");
   title.className = "mb-2 text-white ";
   title.textContent = "افزودن گروه جدید";
