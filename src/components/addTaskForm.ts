@@ -18,11 +18,10 @@ const renderAddTaskForm = () => {
   div.id = "formContainer";
   div.className = "flex flex-col gap-2 add-task-bg ";
   form.append(div);
-  const getUsername = localStorage.getItem("username");
   const title = document.createElement("label");
   title.setAttribute("for", "taskInput");
   title.className = "text-white font-2xl animate-type ";
-  title.textContent = `سلام ${getUsername}!  هدفت چیه؟`;
+  title.textContent = "عنوان هدف";
 
   div.append(title);
   const taskInput = document.createElement("input");

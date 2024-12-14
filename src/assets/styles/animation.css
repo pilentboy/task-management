@@ -42,7 +42,7 @@
   width: 0;
   overflow: hidden;
   border-left: 1px solid white;
-  animation: typing 5s steps(70, end) both;
+  animation: typing 2s steps(70, end) both;
   white-space: nowrap;
 }
 
@@ -55,7 +55,7 @@
     width: 0;
   }
   to {
-    width: 100%;
+    width: 30%;
     border-left: 0;
   }
 }
@@ -105,7 +105,7 @@
   transform: translateX(100%);
   z-index: -1;
   transition: 150ms;
-  @apply border-slate-800
+  @apply border-slate-800;
 }
 .animation-btn:hover:after,
 .animation-btn:active:after {

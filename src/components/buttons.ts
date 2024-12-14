@@ -1,7 +1,7 @@
 // button container in forms
 const renderButtonContianer = (firstBTN: any, secondBTN: any) => {
   const btnDiv = document.createElement("div");
-  btnDiv.className = "w-full flex items-center justify-center gap-10 mt-4";
+  btnDiv.className = "w-full flex flex-row-reverse items-center justify-center gap-10 mt-4";
   btnDiv.append(firstBTN);
   btnDiv.append(secondBTN);
   return btnDiv;
