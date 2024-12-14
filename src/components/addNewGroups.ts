@@ -51,6 +51,7 @@ const addNewGroups = () => {
         updatedTaskList.push({ [addListInput?.value.trim()]: [] });
         localStorage.setItem("groups", JSON.stringify(updatedTaskList));
         addListInput.value = "";
+        addListInput.classList.remove("border-red-500", "border-2");
         successAlert("با موفقیت افزوده شد!");
       } else {
         erroAlert("گروهی با چنین نامی وجود دارد!");
