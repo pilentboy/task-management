@@ -41,7 +41,8 @@ const renderAddTaskForm = () => {
   const groupSelectElement = renderGroupSelect(
     "w-1/2",
     "tasksListSelect",
-    null
+    null,
+    false
   );
   selectContainer.append(groupSelectElement);
 

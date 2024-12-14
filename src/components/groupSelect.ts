@@ -1,7 +1,8 @@
 const renderGroupSelect = (
   size: string,
   id: string,
-  action: CallableFunction | null
+  action: CallableFunction | null,
+  displayLastSelected: boolean
 ) => {
   const tasksListSelect = document.createElement("select");
   tasksListSelect.name = id;
@@ -18,7 +19,6 @@ const renderGroupSelect = (
     localStorage.setItem("group_filter", e.target.value);
   });
 
- 
   const taskListNames = localStorage.getItem("groups") || null;
   const groupFilter = localStorage.getItem("group_filter");
 
@@ -28,12 +28,11 @@ const renderGroupSelect = (
     taskList.forEach((listName: string) => {
       taskNames.push(Object.keys(listName)[0]);
     });
-    taskNames.forEach((currentListName) => {
+    taskNames.forEach((groupTitle) => {
       const option = document.createElement("option");
-      if (currentListName === groupFilter) option.selected = true;
-      option.value = currentListName;
-      option.textContent = currentListName;
-      option.className = "";
+      if (displayLastSelected && groupTitle === groupFilter) option.selected = true;
+      option.value = groupTitle;
+      option.textContent = groupTitle;
       tasksListSelect.append(option);
     });
   } else {

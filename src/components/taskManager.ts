@@ -24,10 +24,15 @@ const renderTaskOptions = () => {
     "w-full border-t border-slate-800 h-24 sm:h-20 flex justify-between items-center  px-2";
 
   taskOptionsContainer.append(
-    renderGroupSelect("w-[90px]", "taskRenderedGroup", (e: any) => {
-      document.querySelector("#taskList")?.remove();
-      renderTaskList(e.target.value);
-    })
+    renderGroupSelect(
+      "w-[90px]",
+      "taskRenderedGroup",
+      (e: any) => {
+        document.querySelector("#taskList")?.remove();
+        renderTaskList(e.target.value);
+      },
+      true
+    )
   );
 
   const taskOptionsButtonsWrapper = document.createElement("div");
