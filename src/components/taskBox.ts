@@ -18,7 +18,17 @@ const renderAddTaskBox = () => {
 
   taskBoxToggler.addEventListener("click", () => {
     if (window.innerWidth < 640) {
+
       modalContainer(renderAddTaskForm());
+
+      const taskForm=document.querySelector("#addTaskForm")
+
+      if (window.innerWidth < 640) {
+        setTimeout(() => {
+          taskForm?.classList.remove("translate-y-[100%]");
+        }, 100);
+      }
+
     } else {
       taskBoxToggler.classList.add("animation-remove");
       taskBoxToggler.disabled = true;

@@ -10,7 +10,7 @@ const renderProfileBox = () => {
   profileBoxToggler.id = "groupBoxToggler";
   profileBoxToggler.type = "button";
   const icon = document.createElement("img");
-  icon.src = "/task-management/svg/profile-svgrepo-com.svg";
+  icon.src = "/task-management/svg/setting-5-svgrepo-com.svg";
   profileBoxToggler.className =
     "duration-500 w-fit  absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] flex items-center justify-center";
   profileBoxToggler.append(icon);

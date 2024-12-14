@@ -14,6 +14,7 @@ const renderButtonContianer = (firstBTN: any, secondBTN: any) => {
 const renderCloseBTN = (action: any) => {
   const button = document.createElement("button");
   button.type = "button";
+  button.className = 'hover:scale-110 duration-150';
   const icon = document.createElement("img");
   icon.src = "/task-management/svg/close-square-svgrepo-com.svg";
   icon.className = "w-10 h-10";
@@ -25,7 +26,7 @@ const renderCloseBTN = (action: any) => {
 // submit btn
 const renderSubmitBTN = (btnID: string) => {
   const submitBTN = document.createElement("button");
-  submitBTN.className = "py-1 duration-150";
+  submitBTN.className = "py-1 duration-150 hover:scale-110";
   submitBTN.setAttribute("id", btnID);
   const icon = document.createElement("img");
   icon.src = "/task-management/svg/tick-square-svgrepo-com.svg";

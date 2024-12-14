@@ -13,10 +13,10 @@ const renderAddTaskForm = () => {
   const form = document.createElement("form");
   form.setAttribute("id", "addTaskForm");
   form.className =
-    "w-3/4 animate__fadeIn animate__animated  sm:w-full  sm:block ";
+    "w-full h-[300px] bg-red-500 sm:h-fit animate__fadeIn animate__animated absolute duration-300  bottom-0 left-1/2 translate-x-[-50%] translate-y-[100%] border border-slate-800 rounded-lg rounded-b-none sm:border-none  sm:left-0  sm:translate-y-0 sm:translate-x-0 sm:w-full  sm:block sm:relative";
   const div = document.createElement("div");
   div.id = "formContainer";
-  div.className = "flex flex-col gap-2 add-task-bg ";
+  div.className = "flex flex-col gap-2 add-task-bg h-full py-4 px-2 sm:px-0 sm:py-0 sm:gap-2 ";
   form.append(div);
   const title = document.createElement("label");
   title.setAttribute("for", "taskInput");
@@ -25,7 +25,7 @@ const renderAddTaskForm = () => {
 
   div.append(title);
   const taskInput = document.createElement("input");
-  taskInput.className = "input input-bordered w-full max-w-xs";
+  taskInput.className = "input input-bordered w-3/4 sm:w-full max-w-xs";
   taskInput.placeholder = "هدفم...";
   taskInput.setAttribute("id", "taskInput");
   div.append(taskInput);
