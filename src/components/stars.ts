@@ -32,7 +32,6 @@ const renderStars = (): void => {
   for (let i = 0; i < starsCount; i++) {
     const star = document.createElement("span");
     star.classList.add("star", "absolute");
-    i % 2 === 0 ? star.classList.add("animate-ping") : null;
     const x: number = Math.floor(Math.random() * window.innerWidth + 50);
     const y: number = Math.floor(Math.random() * window.innerHeight + 50);
     star.style.left = `${x}px`;
