@@ -23,8 +23,6 @@ import("./assets/styles/index.css").then(() => {
         localStorage.setItem("group_filter", "اهدافم");
       if (!localStorage.getItem("task_status_presentation_filter"))
         localStorage.setItem("task_status_presentation_filter", "همه");
-      if (!localStorage.getItem("ui_preference"))
-        localStorage.setItem("ui_preference", "ساده");
       if (!localStorage.getItem("startup_section"))
         localStorage.setItem("startup_section", "خانه");
       renderAppBoxes();

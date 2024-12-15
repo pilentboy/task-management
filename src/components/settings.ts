@@ -6,26 +6,6 @@ const settings = () => {
   settingsContainer.innerHTML = `
   <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
   <div class="collapse-title text-xl font-medium"> 
-  تغییر رابط کاربری
-  </div>
-  <div class="collapse-content">
-  <div class="form-control">
-  <label class="label cursor-pointer">
-    <span class="label-text">ساده</span>
-    <input type="radio" name="uipreference" class="radio checked:bg-blue-600" data-theme='ساده'  />
-  </label>
-</div>
-<div class="form-control">
-  <label class="label cursor-pointer">
-    <span class="label-text">حلقه</span>
-    <input type="radio" name="uipreference" class="radio checked:bg-blue-600" data-theme='حلقه' />
-  </label>
-</div>
-  </div>
-</div>
-
-  <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
-  <div class="collapse-title text-xl font-medium"> 
  تنظیم برنامه آغازین
   </div>
   <div class="collapse-content">

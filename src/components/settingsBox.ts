@@ -1,13 +1,12 @@
 import modalContainer from "../modals/modalContainer";
 import { handleStartupOptions } from "../utils/handleStartup";
-import handleUIDisplay from "../utils/handleUIDisplay";
 import settings from "./settings";
 
 const renderSettingsBox = () => {
   const profileBox = document.createElement("div");
   profileBox.id = "settingsBox";
   profileBox.className =
-    "w-[75px] h-20 z-[800] flex flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 overflow-hidden sm:w-48 duration-300 hover:scale-105 cursor-pointer";
+    "w-[75px] h-20 z-[800] flex flex-col relative items-center justify-center  sm:h-48 border-2 p-4 rounded-xl border-slate-900 sm:w-48 duration-300 hover:scale-105 cursor-pointer";
   const profileBoxToggler = document.createElement("button");
   profileBoxToggler.id = "groupBoxToggler";
   profileBoxToggler.type = "button";
@@ -19,7 +18,6 @@ const renderSettingsBox = () => {
   profileBox.append(profileBoxToggler);
   profileBox.addEventListener("click", () => {
     modalContainer(settings(), "تنظیمات");
-    handleUIDisplay();
     handleStartupOptions();
   });
   return profileBox;
