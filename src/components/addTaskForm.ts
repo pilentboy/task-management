@@ -1,3 +1,5 @@
+import FormInput from "../interfaces/formInput.interface";
+
 import {
   renderCloseBTN,
   renderButtonContianer,
@@ -54,7 +56,6 @@ const renderAddTaskForm = () => {
   addListBTN.addEventListener("click", addNewGroups);
   selectContainer.append(addListBTN);
 
-
   div.append(selectContainer);
 
   window.addEventListener("resize", () => {
@@ -100,10 +101,14 @@ const renderAddTaskForm = () => {
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (
-      taskInput.value.trim().length > 0 &&
-      taskInput.value.trim().length < 50
-    ) {
+
+    const newTaskInput: string = taskInput.value.trim();
+    const error: FormInput = {
+      minLength: newTaskInput.length > 0,
+      maxLengh: newTaskInput.length < 40,
+    };
+
+    if (error.minLength && error.maxLengh) {
       handleAddTask(taskInput.value, groupSelectElement.value);
       taskInput.classList.remove("border-2", "border-red-600");
       taskInput.classList.add("border-slate-400");
@@ -112,7 +117,11 @@ const renderAddTaskForm = () => {
     } else {
       taskInput.classList.remove("border-slate-400");
       taskInput.classList.add("border-2", "border-red-600");
-      erroAlert("عنوان هدف نمی تواند خالی باشد!");
+      erroAlert(
+        !error.minLength
+          ? "عنوان هدف نمی تواند خالی باشد!"
+          : "تعداد کلمات عنوان نمی تواند بیش از 40 باشد!"
+      );
     }
   });
   form.append(div);

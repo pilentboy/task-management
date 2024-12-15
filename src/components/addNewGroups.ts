@@ -7,6 +7,7 @@ import { erroAlert, successAlert } from "./alets";
 import checkUserGroups from "../utils/checkUserGroups";
 import modalContainer from "../modals/modalContainer";
 import renderGroupSelect from "./groupSelect";
+import FormInput from "../interfaces/formInput.interface";
 
 const addNewGroups = () => {
   const taskBox = document.querySelector("#addTaskBox");
@@ -48,11 +49,18 @@ const addNewGroups = () => {
   );
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-    if (addListInput.value.length > 0 && addListInput.value.length < 50) {
-      if (checkUserGroups(addListInput.value.trim())) {
+    const newGroupName: string = addListInput.value.trim();
+
+    const error: FormInput = {
+      minLength: newGroupName.length > 0,
+      maxLengh: newGroupName.length < 30,
+    };
+
+    if (error.minLength && error.maxLengh) {
+      if (checkUserGroups(newGroupName)) {
         const taskList = localStorage.getItem("groups");
         const updatedTaskList = taskList ? JSON.parse(taskList) : null;
-        updatedTaskList.push({ [addListInput?.value.trim()]: [] });
+        updatedTaskList.push({ [newGroupName]: [] });
         localStorage.setItem("groups", JSON.stringify(updatedTaskList));
         addListInput.value = "";
         addListInput.classList.remove("border-red-500", "border-2");
@@ -69,7 +77,11 @@ const addNewGroups = () => {
       }
     } else {
       addListInput.classList.add("border-red-500", "border-2");
-      erroAlert("نام یک گروه نمی تواند خالی باشد!");
+      erroAlert(
+        !error.minLength
+          ? "نام یک گروه نمی تواند خالی باشد!"
+          : "نام یک گروه نمی تواند 30 کلمه ای باشد"
+      );
     }
   });
   if (window.innerWidth < 640) {
