@@ -5,7 +5,7 @@ const handleUIDisplay = () => {
   
   const uipreference=localStorage.getItem("ui_preference")
 
-  uiperformanceRadios.forEach((radio) => {
+  uiperformanceRadios.forEach((radio:any) => {
 	if(uipreference && uipreference === radio.dataset.theme) radio.setAttribute('checked','checked')
 	console.log(radio.dataset.theme)
     radio.addEventListener("change", (e: any) => {
