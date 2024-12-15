@@ -86,7 +86,7 @@ const addNewGroups = () => {
   });
   if (window.innerWidth < 640) {
     document.querySelector("#modalContainer")?.remove();
-    modalContainer(form);
+    modalContainer(form, "خانه");
   } else {
     taskBox?.append(form);
   }

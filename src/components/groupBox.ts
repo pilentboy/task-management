@@ -19,14 +19,14 @@ const renderGroupBox = () => {
   groupBox.append(groupBoxToggler);
 
   groupBox.addEventListener("click", () => {
-    modalContainer(taskManagerContainer());
+    modalContainer(taskManagerContainer(),"مدیریت برنامه");
 
     const groupManager = document.querySelector("#taskManagerContainer");
 
     if (window.innerWidth < 640) {
       setTimeout(() => {
         groupManager?.classList.remove("translate-y-[100%]");
-      }, 0);
+      }, 50);
     }
 
     const groupFilter = localStorage.getItem("group_filter");

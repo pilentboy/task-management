@@ -31,8 +31,8 @@ const settings = () => {
   <div class="collapse-content">
   <div class="form-control">
   <label class="label cursor-pointer">
-    <span class="label-text">صفحه اصلی</span>
-    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-startup="صفحه اصلی" />
+    <span class="label-text">خانه</span>
+    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-startup="خانه" />
   </label>
 </div>
   <div class="form-control">

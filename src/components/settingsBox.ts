@@ -18,7 +18,7 @@ const renderSettingsBox = () => {
   profileBoxToggler.append(icon);
   profileBox.append(profileBoxToggler);
   profileBox.addEventListener("click", () => {
-    modalContainer(settings());
+    modalContainer(settings(), "تنظیمات");
     handleUIDisplay();
     handleStartupOptions();
   });

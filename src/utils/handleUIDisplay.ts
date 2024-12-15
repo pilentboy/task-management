@@ -10,7 +10,6 @@ const handleUIDisplay = () => {
   uiperformanceRadios.forEach((radio: any) => {
     if (uipreference && uipreference === radio.dataset.theme)
       radio.setAttribute("checked", "checked");
-    console.log(radio.dataset.theme);
     radio.addEventListener("change", (e: any) => {
       const selectedValue = e.target.dataset.theme;
       localStorage.setItem("ui_preference", selectedValue);

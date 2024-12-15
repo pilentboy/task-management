@@ -25,10 +25,10 @@ import("./assets/styles/index.css").then(() => {
         localStorage.setItem("task_status_presentation_filter", "همه");
       if (!localStorage.getItem("ui_preference"))
         localStorage.setItem("ui_preference", "ساده");
-      if (!localStorage.getItem("startup_modal"))
-        localStorage.setItem("startup_modal", "صفحه اصلی");
+      if (!localStorage.getItem("startup_section"))
+        localStorage.setItem("startup_section", "خانه");
       renderAppBoxes();
-      
+
       loading?.remove();
     }, 500);
   });

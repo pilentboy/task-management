@@ -94,6 +94,7 @@ const renderAddTaskForm = () => {
           "h-64"
         );
         addTaskBox?.classList.add("sm:w-64", "h-24");
+        document.title = "خانه";
       }),
       renderSubmitBTN("submitTaskBTN")
     )

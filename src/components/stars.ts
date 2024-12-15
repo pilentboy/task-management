@@ -30,7 +30,6 @@ const renderStars = (): void => {
   });
 
   for (let i = 0; i < starsCount; i++) {
-    console.log("x")
     const star = document.createElement("span");
     star.classList.add("star", "absolute");
     i % 2 === 0 ? star.classList.add("animate-ping") : null;

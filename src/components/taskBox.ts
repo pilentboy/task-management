@@ -18,7 +18,7 @@ const renderAddTaskBox = () => {
 
   taskBoxToggler.addEventListener("click", () => {
     if (window.innerWidth < 640) {
-      modalContainer(renderAddTaskForm());
+      modalContainer(renderAddTaskForm(), "افزودن هدف");
 
       const taskForm = document.querySelector("#addTaskForm");
 

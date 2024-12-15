@@ -9,6 +9,7 @@ import { erroAlert } from "./alets";
 import deleteGroupBox from "./deleteGroupBox";
 
 const taskManagerContainer = () => {
+  document.title = "مدیریت برنامه";
   const container = document.createElement("div");
   container.id = "taskManagerContainer";
   container.className =
@@ -71,6 +72,7 @@ const renderTaskOptions = () => {
             const groupFilter = localStorage.getItem("group_filter");
             document.querySelector("#taskList")?.remove();
             renderTaskList(groupFilter ? groupFilter : "وظایفم");
+            
           })
         );
       } else {
