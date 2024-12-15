@@ -6,7 +6,7 @@ const renderAddTaskBox = () => {
   taskBox.id = "addTaskBox";
   taskBox.className =
     "border rounded-xl w-[95px] bg-slate-900 sm:bg-transparent h-24 flex flex-col relative 	items-center  sm:h-64 sm:border-t-0 sm:border-b-0 sm:border-l-2 sm:border-r-2 p-4 border-slate-900 overflow-hidden z-[800] sm:w-64 duration-300 sm:rounded-none";
-  const taskBoxToggler = document.createElement("button");
+  const taskBoxToggler = document.createElement("button") as HTMLButtonElement;
   taskBoxToggler.id = "taskBoxToggler";
 
   taskBoxToggler.type = "button";
@@ -18,17 +18,15 @@ const renderAddTaskBox = () => {
 
   taskBoxToggler.addEventListener("click", () => {
     if (window.innerWidth < 640) {
-
       modalContainer(renderAddTaskForm());
 
-      const taskForm=document.querySelector("#addTaskForm")
+      const taskForm = document.querySelector("#addTaskForm");
 
       if (window.innerWidth < 640) {
         setTimeout(() => {
           taskForm?.classList.remove("translate-y-[100%]");
         }, 100);
       }
-
     } else {
       taskBoxToggler.classList.add("animation-remove");
       taskBoxToggler.disabled = true;

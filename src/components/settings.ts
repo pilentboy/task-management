@@ -24,6 +24,32 @@ const settings = () => {
   </div>
 </div>
 
+  <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
+  <div class="collapse-title text-xl font-medium"> 
+ تنظیم برنامه آغازین
+  </div>
+  <div class="collapse-content">
+  <div class="form-control">
+  <label class="label cursor-pointer">
+    <span class="label-text">صفحه اصلی</span>
+    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-theme="صفحه اصلی" />
+  </label>
+</div>
+  <div class="form-control">
+  <label class="label cursor-pointer">
+    <span class="label-text">فرم افزودن هدف  </span>
+    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-theme="فرم افزودن هدف"/>
+  </label>
+</div>
+<div class="form-control">
+  <label class="label cursor-pointer">
+    <span class="label-text">مدیریت اهداف</span>
+    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-theme="مدیریت اهداف" />
+  </label>
+</div>
+
+  </div>
+</div>
   
   <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
   <div class="collapse-title text-xl font-medium">داستان ستاره ها چیه؟</div>
