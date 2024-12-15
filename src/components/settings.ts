@@ -32,19 +32,19 @@ const settings = () => {
   <div class="form-control">
   <label class="label cursor-pointer">
     <span class="label-text">صفحه اصلی</span>
-    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-theme="صفحه اصلی" />
+    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-startup="صفحه اصلی" />
   </label>
 </div>
   <div class="form-control">
   <label class="label cursor-pointer">
     <span class="label-text">فرم افزودن هدف  </span>
-    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-theme="فرم افزودن هدف"/>
+    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-startup="فرم افزودن هدف"/>
   </label>
 </div>
 <div class="form-control">
   <label class="label cursor-pointer">
     <span class="label-text">مدیریت اهداف</span>
-    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-theme="مدیریت اهداف" />
+    <input type="radio" name="startup" class="radio checked:bg-blue-600" data-startup="مدیریت اهداف" />
   </label>
 </div>
 

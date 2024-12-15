@@ -1,4 +1,5 @@
 import modalContainer from "../modals/modalContainer";
+import { handleStartupOptions } from "../utils/handleStartup";
 import handleUIDisplay from "../utils/handleUIDisplay";
 import settings from "./settings";
 
@@ -19,6 +20,7 @@ const renderSettingsBox = () => {
   profileBox.addEventListener("click", () => {
     modalContainer(settings());
     handleUIDisplay();
+    handleStartupOptions();
   });
   return profileBox;
 };

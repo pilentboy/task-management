@@ -26,7 +26,7 @@ import("./assets/styles/index.css").then(() => {
       if (!localStorage.getItem("ui_preference"))
         localStorage.setItem("ui_preference", "ساده");
       if (!localStorage.getItem("startup_modal"))
-        localStorage.setItem("startup_modal", "خانه");
+        localStorage.setItem("startup_modal", "صفحه اصلی");
       renderAppBoxes();
       
       loading?.remove();
