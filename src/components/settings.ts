@@ -12,13 +12,13 @@ const settings = () => {
   <div class="form-control">
   <label class="label cursor-pointer">
     <span class="label-text">ساده</span>
-    <input type="radio" name="uiperformance" class="radio checked:bg-blue-600" data-theme='ساده'  />
+    <input type="radio" name="uipreference" class="radio checked:bg-blue-600" data-theme='ساده'  />
   </label>
 </div>
 <div class="form-control">
   <label class="label cursor-pointer">
     <span class="label-text">حلقه</span>
-    <input type="radio" name="uiperformance" class="radio checked:bg-blue-600" data-theme='حلقه' />
+    <input type="radio" name="uipreference" class="radio checked:bg-blue-600" data-theme='حلقه' />
   </label>
 </div>
   </div>
