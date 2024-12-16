@@ -2,6 +2,7 @@ import taskManagerModal from "../modals/taskManagerModal";
 import handleDeleteGroup from "../utils/handleDeleteGroup";
 import { successAlert } from "./alets";
 import renderGroupSelect from "./groupSelect";
+import renderStars from "./stars";
 import { renderTaskList } from "./taskManager";
 
 const deleteGroupBox = () => {
@@ -46,6 +47,7 @@ const deleteGroupBox = () => {
       "#taskOptionsContainer"
     );
     handleDeleteGroup();
+    renderStars();
     if (taskOptionsContainer)
       taskSelectGroup?.replaceWith(
         renderGroupSelect(
@@ -58,7 +60,7 @@ const deleteGroupBox = () => {
           true
         )
       );
-      successAlert("با موفقیت حذف شد!")
+    successAlert("با موفقیت حذف شد!");
   });
   deleteGroupWrapper.append(buttonContainer);
 
