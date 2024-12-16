@@ -260,7 +260,7 @@ const renderTaskList = (groupTitle: string) => {
 
         right.append(taskStatusBTN);
         const title = document.createElement("li");
-        title.className = "text-white text-sm";
+        title.className = "text-gray-400 text-sm";
         title.textContent = task.title;
         right.append(title);
         li.append(right);
