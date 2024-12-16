@@ -1,6 +1,6 @@
 import { v4 as uniqueID } from "uuid";
 
-interface taskInfo {
+interface TaskInfo {
   id: string;
   title: string;
   status: boolean;
@@ -9,34 +9,57 @@ interface taskInfo {
 }
 
 // handle add tasks to localstorage
-const handleAddTask = (taskTitle: string, listName: any) => {
+const handleAddTask = (taskTitle: string, listName: string): void => {
   const date = new Date();
+  // Get the current date in Persian calendar format
   const currentDate = date.toLocaleString("fa-IR", { dateStyle: "medium" });
 
+  // Retrieve the task groups from localStorage
   const taskList = localStorage.getItem("groups");
+  const trimmedTaskTitle = taskTitle.trim();
+
   if (taskList) {
+    // Parse the stored task groups
     const updatedTaskList = JSON.parse(taskList);
-    updatedTaskList.forEach((list: any) => {
+
+    // Check if the specified list exists and update it
+    const listFound = updatedTaskList.some((list: any) => {
       if (Object.keys(list)[0] === listName) {
-        const taskObj: taskInfo = {
+        const taskObj: TaskInfo = {
           id: uniqueID(),
-          title: "",
+          title: trimmedTaskTitle,
           status: false,
           createdDate: currentDate,
           completedDate: false,
         };
-        const selectedList = list[listName];
-        taskObj.title = taskTitle.trim();
-        selectedList.push(taskObj);
-        list[listName] = selectedList;
-        localStorage.setItem("groups", JSON.stringify(updatedTaskList));
+
+        // Add the new task to the existing list
+        list[listName].push(taskObj);
+        return true;
       }
+      return false;
     });
-  } else {
-    localStorage.setItem(
-      "groups",
-      JSON.stringify([{ وظایفم: [taskTitle.trim()] }])
-    );
+
+    if (listFound) {
+      localStorage.setItem("groups", JSON.stringify(updatedTaskList));
+    } else {
+      localStorage.setItem(
+        "groups",
+        JSON.stringify([
+          {
+            اهدافم: [
+              {
+                id: uniqueID(),
+                title: taskTitle.trim(),
+                status: false,
+                createdDate: date,
+                completedDate: false,
+              },
+            ],
+          },
+        ])
+      );
+    }
   }
 };
 export default handleAddTask;
