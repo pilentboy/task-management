@@ -90,7 +90,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 earthContainer.appendChild(renderer.domElement);
 
 // 2. افزودن نور
-const light = new THREE.PointLight(0xffffff, 0.7); // کاهش شدت نور
+const light = new THREE.PointLight(0xffffff, 3000); // کاهش شدت نور
 light.position.set(10, 30, 90);
 scene.add(light);
 
