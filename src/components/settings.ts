@@ -33,7 +33,7 @@ const settings = () => {
   
   <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
   <div class="collapse-title text-xl font-medium">داستان ستاره ها چیه؟</div>
-  <div class="collapse-content">
+  <div class="collapse-content label-text ">
     <p>بعد از تکمیل هر کدوم از اهدافی که واسه خودت تعیین میکنی، یک ستاره به دنیا اضافه میشه!</p>
   </div>
 </div>`;
