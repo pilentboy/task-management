@@ -44,8 +44,14 @@ function initializeLocalStorageDefaults() {
   }
 }
 
-window.addEventListener("resize", () => {
+// Function to handle actions on window resize
+function handleResize() {
+  // Render the stars, ensuring they adapt to the new window size
   renderStars();
+
+  // Render the Earth, adjusting its size or position based on the new window dimensions
   renderEarth();
-  console.log("x")
-});
+}
+
+// Attach the resize event listener to the window
+window.addEventListener("resize", handleResize);
