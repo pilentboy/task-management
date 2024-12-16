@@ -10,27 +10,39 @@ import { OrbitControls } from "three-stdlib";
 const loading = document.querySelector<HTMLDivElement>("#loading");
 
 import("./assets/styles/index.css").then(() => {
+  // Display body and show loading 
   document.body.style.display = "block";
   loading?.classList.remove("hidden");
-  window.addEventListener("load", () => {
-    renderStars();
-    setTimeout(() => {
-      if (!localStorage.getItem("groups"))
-        localStorage.setItem("groups", JSON.stringify([{ اهدافم: [] }]));
-      if (!localStorage.getItem("order_filter"))
-        localStorage.setItem("order_filter", "جدید");
-      if (!localStorage.getItem("group_filter"))
-        localStorage.setItem("group_filter", "اهدافم");
-      if (!localStorage.getItem("task_status_presentation_filter"))
-        localStorage.setItem("task_status_presentation_filter", "همه");
-      if (!localStorage.getItem("startup_section"))
-        localStorage.setItem("startup_section", "خانه");
-      renderAppBoxes();
 
+  window.addEventListener("load", () => {
+    initializeLocalStorageDefaults();
+    renderStars();
+
+    setTimeout(() => {
+      renderAppBoxes();
       loading?.remove();
     }, 500);
   });
 });
+
+/**
+ * Ensures default values exist in localStorage for specific keys.
+ */
+function initializeLocalStorageDefaults() {
+  const defaults = {
+    groups: JSON.stringify([{ اهدافم: [] }]),
+    order_filter: "جدید",
+    group_filter: "اهدافم",
+    task_status_presentation_filter: "همه",
+    startup_section: "خانه",
+  };
+
+  for (const [key, value] of Object.entries(defaults)) {
+    if (!localStorage.getItem(key)) {
+      localStorage.setItem(key, value);
+    }
+  }
+}
 
 window.addEventListener("resize", () => {
   renderStars();

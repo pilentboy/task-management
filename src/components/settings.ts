@@ -1,7 +1,7 @@
 const settings = () => {
   const settingsContainer = document.createElement("div");
   settingsContainer.className =
-    "rounded-lg w-[90%] sm:w-[600px] h-fit p-4 bg-black border space-y-2  border-slate-800";
+    "rounded-lg w-[90%] sm:w-[600px] h-fit p-4 bg-black border space-y-2  border-slate-800 animate__fadeIn animate__animated";
 
   settingsContainer.innerHTML = `
   <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
