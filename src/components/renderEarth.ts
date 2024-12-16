@@ -69,7 +69,7 @@ const renderEarth = () => {
   }
   animate();
 
-  if (window.innerWidth < 500) {
+  if (window.innerWidth < 600) {
     document.querySelector(".container")?.append(earthContainer);
   } else {
     document.querySelector("#earthContainer")?.remove();

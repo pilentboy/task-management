@@ -47,4 +47,5 @@ function initializeLocalStorageDefaults() {
 window.addEventListener("resize", () => {
   renderStars();
   renderEarth();
+  console.log("x")
 });
