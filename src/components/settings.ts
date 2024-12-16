@@ -36,7 +36,7 @@ const settings = () => {
     <div class="collapse-content">
   <div class="form-control">
   <label class="label cursor-pointer" >
-    <span class="label-text">حذف تمام اطلاعات و شروع دوباره: </span>
+    <span class="label-text">حذف تمام اطلاعات و شروع دوباره</span>
     <button  id="deleteDataBTN" class="btn btn-error btn-sm ">حذف</button>
   </label>
 </div>
