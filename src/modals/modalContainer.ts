@@ -1,6 +1,7 @@
 const container = document.querySelector<HTMLDivElement>(".container");
 
 const modalContainer = (content: any, title: string) => {
+  document.querySelector("#modalContainer")?.remove();
   document.title = title;
   const modal = document.createElement("dialog");
   modal.id = "modalContainer";

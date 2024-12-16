@@ -1,8 +1,8 @@
 const settings = () => {
   const settingsContainer = document.createElement("div");
   settingsContainer.className =
-    "rounded-lg w-[90%] sm:w-[600px] h-fit p-4 bg-black border space-y-2  border-slate-800 animate__fadeIn animate__animated";
-
+    "rounded-lg w-[90%] sm:w-[600px] h-fit p-4 bg-black border space-y-2  border-slate-800 animate__fadeIn animate__animated relative";
+  settingsContainer.id = "settingsContainer";
   settingsContainer.innerHTML = `
   <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
   <div class="collapse-title text-xl font-medium"> 
@@ -31,6 +31,18 @@ const settings = () => {
   </div>
 </div>
   
+ <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
+  <div class="collapse-title text-xl font-medium">مدیریت اطلاعات</div>
+    <div class="collapse-content">
+  <div class="form-control">
+  <label class="label cursor-pointer" >
+    <span class="label-text">حذف تمام اطلاعات و شروع دوباره: </span>
+    <button  id="deleteDataBTN" class="btn btn-error btn-sm ">حذف</button>
+  </label>
+</div>
+</div>
+</div>
+
   <div tabindex="0" class="collapse collapse-arrow border-base-300 bg-base-200 border">
   <div class="collapse-title text-xl font-medium">داستان ستاره ها چیه؟</div>
   <div class="collapse-content label-text ">

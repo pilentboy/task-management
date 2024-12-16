@@ -26,7 +26,7 @@ const erroAlert = (title: string) => {
 const successAlert = (title: string) => {
   const errorAlert = document.createElement("div");
   errorAlert.className =
-    "alert alert-success animate__fadeIn z-[1000] animate__animated fixed top-8 left-1/2 translate-x-[-50%] w-[200px] h-10 flex items-center justify-around text-center py-2";
+    "alert alert-success animate__fadeIn z-[1000] animate__animated fixed top-8 left-1/2 translate-x-[-50%] min-w-[200px] max-w-[230px] h-10 flex items-center justify-around text-center py-2";
   errorAlert.innerHTML = `
   <svg
     xmlns="http://www.w3.org/2000/svg"

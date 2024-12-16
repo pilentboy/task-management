@@ -1,4 +1,5 @@
 import modalContainer from "../modals/modalContainer";
+import handleFormatData from "../utils/handleFormatData";
 import { handleStartupOptions } from "../utils/handleStartup";
 import settings from "./settings";
 
@@ -19,6 +20,7 @@ const renderSettingsBox = () => {
   profileBox.addEventListener("click", () => {
     modalContainer(settings(), "تنظیمات");
     handleStartupOptions();
+    handleFormatData();
   });
   return profileBox;
 };
