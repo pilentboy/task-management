@@ -48,21 +48,7 @@ window.addEventListener("resize", () => {
   renderStars();
 });
 
-// change welcome message dynamicly based on user's screen size
-// const setWelcomeMessage = () => {
-//   const welcomeMessage =
-//     document.querySelector<HTMLHeadingElement>("#welcomeMessage");
-//   if (welcomeMessage) {
-//     if (window.innerWidth < 640) {
-//       welcomeMessage.textContent = "به اپ برنامه ریزی خودت خوش اومدی";
-//     } else {
-//       welcomeMessage.textContent =
-//         "با این اپلیکیشن میتونی به سادگی واسه اهدافت برنامه ریزی کنی";
-//     }
-//   }
-// };
 
-// 1. تنظیم صحنه (Scene)، دوربین (Camera) و رندرر (Renderer)
 
 const earthContainer = document.createElement("div");
 earthContainer.style.position = "absolute";
